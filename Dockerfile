@@ -7,9 +7,9 @@ COPY package*.json ./
 
 RUN npm install --omit=dev
 
-ENV PORT=80
+ENV PORT=3000
 
-EXPOSE 80
+EXPOSE 3000
 
 COPY . .
 ENV ENV=prod

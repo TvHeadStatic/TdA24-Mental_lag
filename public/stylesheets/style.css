@@ -1,8 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --prussian-blue: #00384D;
+  --sky-blue: #74C7D3;
+  --white: #FFFFFFFF;
+  --jet: #333;
+  --sunglow: #FECB2E;
+}
+
+html {
+  margin: 0px;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  font: 18px Open Sans;
+  background-color: var(--prussian-blue);
+  width: 100%;
+  display: grid;
+}
+
+#viewport-section {
+  justify-self: center;
+  width: 100%;
+  max-width: 1280px;
 }
 
 a {
   color: #00B7FF;
+}
+
+#about {
+  display: grid;
+  grid-auto-rows: 4em auto;
+  grid-auto-columns: 50% 50%;
+  color: var(--white);
+}
+
+#about img {
+  width: 15em;
+  grid-row-start: 2;
+  align-self: center;
+  margin-left: 5em;
+  justify-self: center;
+}
+
+#about-grid-item {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  text-align: right;
+  padding: 5em;
+  justify-self: center;
+}
+
+#footer {
+  background: var(--jet);
+  height: 20em;
+  display: grid;
+  grid-auto-columns: 30% auto;
+  padding: 1em;
+}
+
+#footer img {
+  width: 80%;
+  align-self: center;
+  max-width: 15em;
+  min-width: 10em;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--jet);
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  z-index: 99;
+  left: 0px;
+}
+
+.topnav img {
+  height: 2em;
+  width: auto;
+  float: left;
+  padding: 1em;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: var(--white);
+  text-align: center;
+  padding: 1em 1.2em;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.topnav a:hover {
+  background-color: var(--white);
+  color: var(--jet);
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media (orientation: portrait) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive {position: fixed;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive img {
+    float: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #about {
+    grid-auto-rows: 4em auto auto;
+    grid-auto-columns: auto;
+  }
+  #about img {
+    grid-row-start: 2;
+    margin-top: 5em;
+    margin-left: 0em;
+  }
+  #about-grid-item {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    text-align: center;
+    padding: 5em;
+    margin-right: 0em;
+  }
 }

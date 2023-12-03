@@ -7,12 +7,13 @@ html
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   body
     div(class="topnav" id="myTopnav")
-      img(src="/images/TdA_šipka/300ppi/TdA_sipka_bila.png")
-      a(href="#home" class="active") Home
-      a(href="#lecturer") Lecturer
-      a(href="#about") About
-      a(href="javascript:void(0);" class="icon" onclick="nav_bar_expand()")
-        i(class="fa fa-bars")
+      div(class="navholder")
+        img(src="/images/TdA_šipka/300ppi/TdA_sipka_bila.png")
+        a(href="/" class="active") Home
+        a(href="/lecturer") Lecturer
+        a(href="/about") About
+        a(href="javascript:void(0);" class="icon" onclick="nav_bar_expand()")
+          i(class="fa fa-bars")
   
     section(id="viewport-section")
       section(id="about")
@@ -20,10 +21,11 @@ html
         div(id="about-grid-item")
           h1 Hello TdA
           p Welcome to #{title}
-      section(style="background: var(--sky-blue); padding: 3em; font: 18px Open Sans; font-weight: 400; color: var(--prussian-blue); outline-width: 1em; outline-color: var(--white); outline-style: solid;")
+      section(style="background: var(--sky-blue); padding: 3em; font: 1rem Open Sans; font-weight: 400; color: var(--prussian-blue); outline-width: 1em; outline-color: var(--white); outline-style: solid;")
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quis consectetur amet ratione placeat dicta corporis voluptates quisquam eius asperiores odit, iusto eaque aperiam? Asperiores quos excepturi quaerat eaque sapiente delectus nostrum? Aspernatur ratione eaque, aut quam maiores numquam repellat fugiat voluptatem! Magnam aperiam eum dignissimos impedit minus quia aspernatur quod accusamus similique perspiciatis, porro enim facilis eaque quas exercitationem! Neque eligendi ad suscipit explicabo nam impedit vitae, nulla mollitia voluptates reiciendis sapiente ex accusamus facere at architecto eum quia quos totam necessitatibus a ea minima odit officia. Tempora dolorem qui non consequuntur perferendis maxime cupiditate fuga numquam quam autem.
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quis consectetur amet ratione placeat dicta corporis voluptates quisquam eius asperiores odit, iusto eaque aperiam? Asperiores quos excepturi quaerat eaque sapiente delectus nostrum? Aspernatur ratione eaque, aut quam maiores numquam repellat fugiat voluptatem! Magnam aperiam eum dignissimos impedit minus quia aspernatur quod accusamus similique perspiciatis, porro enim facilis eaque quas exercitationem! Neque eligendi ad suscipit explicabo nam impedit vitae, nulla mollitia voluptates reiciendis sapiente ex accusamus facere at architecto eum quia quos totam necessitatibus a ea minima odit officia. Tempora dolorem qui non consequuntur perferendis maxime cupiditate fuga numquam quam autem.
 
     section(id="footer")
-      img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")
+      div
+        img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")
   script(src="/js/index.js")

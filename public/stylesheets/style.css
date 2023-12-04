@@ -8,6 +8,17 @@
   --sunglow: #FECB2E;
 }
 
+.special-section {
+  background: var(--sky-blue);
+  padding: 3em;
+  font: 1rem Open Sans;
+  font-weight: 400;
+  color: var(--prussian-blue);
+  outline-width: 1em;
+  outline-color: var(--white);
+  outline-style: solid;
+}
+
 html {
   margin: 0px;
 }
@@ -20,7 +31,7 @@ body {
   display: grid;
 }
 
-#viewport-section {
+#wrapper {
   justify-self: center;
   width: 100%;
   max-width: 1280px;
@@ -32,24 +43,26 @@ a {
 
 #about {
   display: grid;
-  grid-auto-rows: 4em auto;
-  grid-auto-columns: 50% 50%;
+  grid-auto-rows: 4em auto auto;
+  grid-auto-columns: auto;
   color: var(--white);
 }
 
 #about img {
   width: 15em;
   grid-row-start: 2;
+  margin-top: 5em;
+  margin-left: 0em;
   align-self: center;
-  margin-left: 5em;
   justify-self: center;
 }
 
 #about-grid-item {
-  grid-row-start: 2;
-  grid-column-start: 2;
-  text-align: right;
-  padding: 5em;
+  grid-row-start: 3;
+  grid-column-start: 1;
+  text-align: center;
+  padding: 6em;
+  align-self: center;
   justify-self: center;
 }
 
@@ -75,11 +88,33 @@ a {
   padding: 5em;
 }
 
+/*Desktop design*/
+@media (orientation: landscape) {
+  #about {
+    grid-auto-rows: 4em auto;
+    grid-auto-columns: 40% 60%;
+  }
+
+  #about img {
+    grid-row-start: 2;
+    margin-top: 0em;
+    margin-left: 6em;
+  }
+
+  #about-grid-item {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    text-align: right;
+    padding: 6em;
+  }
+}
+
+/*Navbar (designed desktop first)*/
 .topnav {
   overflow: hidden;
   background-color: var(--jet);
   position: fixed;
-  width: 100vw;
+  width: 100%;
   top: 0px;
   z-index: 99;
   left: 0px;
@@ -119,43 +154,32 @@ a {
 }
 
 @media (orientation: portrait) {
-  .topnav a:not(:first-child) {display: none;}
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+
   .topnav a.icon {
     float: right;
     display: block;
   }
 
-  .topnav.responsive {position: fixed;}
+  .topnav.responsive {
+    position: fixed;
+  }
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
+
   .topnav.responsive img {
     float: none;
-  }
-}
-
-@media (orientation: portrait) {
-  #about {
-    grid-auto-rows: 4em auto auto;
-    grid-auto-columns: auto;
-  }
-  #about img {
-    grid-row-start: 2;
-    margin-top: 5em;
-    margin-left: 0em;
-  }
-  #about-grid-item {
-    grid-row-start: 3;
-    grid-column-start: 1;
-    text-align: center;
-    padding: 5em;
-    margin-right: 0em;
   }
 }

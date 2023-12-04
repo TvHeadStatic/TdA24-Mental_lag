@@ -52,7 +52,7 @@ a {
   width: 15em;
   grid-row-start: 2;
   margin-top: 5em;
-  margin-left: 0em;
+  margin-left: 1em;
   align-self: center;
   justify-self: center;
 }
@@ -111,7 +111,12 @@ a {
     grid-row-start: 2;
     grid-column-start: 2;
     text-align: right;
-    padding: 6em;
+    padding-bottom: 8em;
+    padding-top: 8em;
+  }
+
+  #about-grid-item h1 {
+    line-height: 1px;
   }
 }
 

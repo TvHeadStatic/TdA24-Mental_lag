@@ -66,6 +66,12 @@ a {
   justify-self: center;
 }
 
+#about-grid-item h1 {
+  font-weight: 400;
+  font-family: Lalezar;
+  font-size: 1.6rem;
+}
+
 #footer {
   background: var(--jet);
   height: 20em;

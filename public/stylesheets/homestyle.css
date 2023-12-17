@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --prussian-blue: #00384D;
+  --sky-blue: #74C7D3;
+  --white: #FFFFFFFF;
+  --jet: #333;
+  --sunglow: #FECB2E;
+}
+
+#about {
+  display: grid;
+  grid-auto-rows: 4em auto auto;
+  grid-auto-columns: auto;
+  color: var(--white);
+}
+
+#about img {
+  width: 15em;
+  grid-row-start: 2;
+  margin-top: 5em;
+  margin-left: 1em;
+  align-self: center;
+  justify-self: center;
+}
+
+#about-grid-item {
+  grid-row-start: 3;
+  grid-column-start: 1;
+  text-align: center;
+  padding: 6em;
+  align-self: center;
+  justify-self: center;
+}
+
+#about-grid-item h1 {
+  font-weight: 400;
+  font-family: Lalezar;
+  font-size: 1.6rem;
+}
+
+/*Desktop design*/
+@media (orientation: landscape) {
+  #about {
+    grid-auto-rows: 4em auto;
+    grid-auto-columns: 40% 60%;
+  }
+
+  #about img {
+    grid-row-start: 2;
+    margin-top: 0em;
+    margin-left: 6em;
+  }
+
+  #about-grid-item {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    text-align: right;
+    padding-bottom: 8em;
+    padding-top: 8em;
+  }
+
+  #about-grid-item h1 {
+    line-height: 1px;
+  }
+}

@@ -41,37 +41,6 @@ a {
   color: #00B7FF;
 }
 
-#about {
-  display: grid;
-  grid-auto-rows: 4em auto auto;
-  grid-auto-columns: auto;
-  color: var(--white);
-}
-
-#about img {
-  width: 15em;
-  grid-row-start: 2;
-  margin-top: 5em;
-  margin-left: 1em;
-  align-self: center;
-  justify-self: center;
-}
-
-#about-grid-item {
-  grid-row-start: 3;
-  grid-column-start: 1;
-  text-align: center;
-  padding: 6em;
-  align-self: center;
-  justify-self: center;
-}
-
-#about-grid-item h1 {
-  font-weight: 400;
-  font-family: Lalezar;
-  font-size: 1.6rem;
-}
-
 #footer {
   background: var(--jet);
   height: 20em;
@@ -92,32 +61,6 @@ a {
   max-width: 15em;
   min-width: 10em;
   padding: 5em;
-}
-
-/*Desktop design*/
-@media (orientation: landscape) {
-  #about {
-    grid-auto-rows: 4em auto;
-    grid-auto-columns: 40% 60%;
-  }
-
-  #about img {
-    grid-row-start: 2;
-    margin-top: 0em;
-    margin-left: 6em;
-  }
-
-  #about-grid-item {
-    grid-row-start: 2;
-    grid-column-start: 2;
-    text-align: right;
-    padding-bottom: 8em;
-    padding-top: 8em;
-  }
-
-  #about-grid-item h1 {
-    line-height: 1px;
-  }
 }
 
 /*Navbar (designed desktop first)*/

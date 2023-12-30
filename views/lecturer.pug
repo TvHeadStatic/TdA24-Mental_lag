@@ -20,11 +20,34 @@ html
   
     section(id="wrapper")
       section(id="placeholder-section")
-      section(class="special-section")
-        h1 Lecturer
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quis consectetur amet ratione placeat dicta corporis voluptates quisquam eius asperiores odit, iusto eaque aperiam? Asperiores quos excepturi quaerat eaque sapiente delectus nostrum? Aspernatur ratione eaque, aut quam maiores numquam repellat fugiat voluptatem! Magnam aperiam eum dignissimos impedit minus quia aspernatur quod accusamus similique perspiciatis, porro enim facilis eaque quas exercitationem! Neque eligendi ad suscipit explicabo nam impedit vitae, nulla mollitia voluptates reiciendis sapiente ex accusamus facere at architecto eum quia quos totam necessitatibus a ea minima odit officia. Tempora dolorem qui non consequuntur perferendis maxime cupiditate fuga numquam quam autem.
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quis consectetur amet ratione placeat dicta corporis voluptates quisquam eius asperiores odit, iusto eaque aperiam? Asperiores quos excepturi quaerat eaque sapiente delectus nostrum? Aspernatur ratione eaque, aut quam maiores numquam repellat fugiat voluptatem! Magnam aperiam eum dignissimos impedit minus quia aspernatur quod accusamus similique perspiciatis, porro enim facilis eaque quas exercitationem! Neque eligendi ad suscipit explicabo nam impedit vitae, nulla mollitia voluptates reiciendis sapiente ex accusamus facere at architecto eum quia quos totam necessitatibus a ea minima odit officia. Tempora dolorem qui non consequuntur perferendis maxime cupiditate fuga numquam quam autem.
-
+      section(class="special-section grid")
+        h1(id="lecturer") Lecturer
+        img(id="picture_url")
+        div(id="names")
+          p(id="full_name")
+            span(id="title_before")
+            span(id="first_name")
+            span(id="middle_name")
+            span(id="last_name")
+            span(id="title_after")
+        div(id="info")
+          p(id="location")
+          p(id="claim")
+          div(id="bio")
+          button(id="showMore" onclick="Clamp()") Show more
+          p(id="tags")
+            span
+            span
+            span
+            span
+            span
+            span
+            span
+            span
+          p(id="price_per_hour")
+        div(id="contact")
+          p(id="telephone_numbers")
+          p(id="emails")
     section(id="footer")
       div
         img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")

@@ -2,3 +2,68 @@
   color: var(--white);
   height: 6em;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+#lecturer {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+}
+
+#picture_url {
+  max-width: 12.5em;
+  justify-self: center;
+  align-self: start;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/*#full_name {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: center;
+  align-self: end;
+}*/
+
+#names {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: center;
+  justify-self: center;
+}
+
+#price_per_hour {
+  color: var(--price);
+  background-color: var(--prussian-blue);
+  width: 12rem;
+  justify-self: center;
+}
+
+#info, #contact {
+  text-align: center;
+  display: grid;
+}
+
+#bio {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#location {
+  font-weight: bold;
+}
+
+#showMore {
+  background-color: var(--prussian-blue);
+  color: var(--white);
+  border: none;
+  justify-self: center;
+}

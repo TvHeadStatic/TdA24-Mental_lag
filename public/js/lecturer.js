@@ -10,14 +10,15 @@ fetch("/lecturer.json")
     doc.getElementById("middle_name").innerHTML = json.middle_name + " "
     doc.getElementById("last_name").innerHTML = json.last_name + " "
     doc.getElementById("title_after").innerHTML = json.title_after + " "
-    doc.getElementById("location").innerHTML = json.location
+    doc.getElementById("location").innerHTML = "Location:<br>" + "<span style=\"weight: normal;\">" + json.location + "</span>"
     doc.getElementById("claim").innerHTML = json.claim
     doc.getElementById("bio").innerHTML = json.bio
 
     for (let i = 0; i < json.tags.length; i++){
-      doc.getElementById("tags").children[i].innerHTML = json.tags[i].name + "<br>"
-      if ((i + 1) % 2 == 0) {doc.getElementById("tags").children[i].style = "font-weight: bold;"}
+      doc.getElementById("tags").appendChild(document.createElement("span"))
+      doc.getElementById("tags").children[i].innerHTML = json.tags[i].name + " "
     }
+    
     doc.getElementById("price_per_hour").innerHTML = "Price: " + json.price_per_hour + " CZK/h"
 
     doc.getElementById("contact").children[0].innerHTML = "<b>Telephone:<br></b>"

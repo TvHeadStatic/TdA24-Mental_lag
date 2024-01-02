@@ -67,3 +67,23 @@
   border: none;
   justify-self: center;
 }
+
+#tags {
+  color: var(--jet);
+  font-weight: bold;
+  font-size: .75rem;
+  text-align: center;
+}
+
+#tags > span {
+  border: solid .1rem;
+  margin: .1rem;
+  padding: 0.1rem;
+  line-height: 1rem;
+  vertical-align: super;
+  display: inline-block;
+}
+
+#description {
+  font-weight: bold;
+}

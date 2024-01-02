@@ -14,7 +14,7 @@ fetch("/lecturer.json")
     doc.getElementById("claim").innerHTML = json.claim
     doc.getElementById("bio").innerHTML = json.bio
 
-    for (let i = 0; i <= 7; i++){
+    for (let i = 0; i < json.tags.length; i++){
       doc.getElementById("tags").children[i].innerHTML = json.tags[i].name + "<br>"
       if ((i + 1) % 2 == 0) {doc.getElementById("tags").children[i].style = "font-weight: bold;"}
     }

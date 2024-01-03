@@ -198,7 +198,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
         rows[0].tags = JSON.parse(rows[0].tags)
         rows[0].contact = JSON.parse(rows[0].contact)
       } catch (error) { return res.json({ status: 400, success: false, })}
-      let result = rows
+      let result = rows[0]
       return res.json({
         status: 200,
         success: true,

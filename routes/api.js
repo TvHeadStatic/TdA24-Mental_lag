@@ -185,7 +185,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
         rows[0].tags = JSON.parse(rows[0].tags)
         rows[0].contact = JSON.parse(rows[0].contact)
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
+      return res.json({ secret: "The cake is a lie", status: 200, success: true }, rows)
     })
   } catch (error) {
     return res.json({

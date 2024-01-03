@@ -153,13 +153,30 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     db.run(sql, [], (err, rows) => {
       if (err) return console.error(err)
       console.log("updated:", req.body)
-    try {
+      try {
         for(var x = 0; x < rows.length; x++) {
           rows[x].tags = JSON.parse(rows[x].tags)
           rows[x].contact = JSON.parse(rows[x].contact)
         }
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ status: 200, success: true, response: rows })
+      let result = req.body
+      return res.json({
+        status: 200,
+        success: true,
+        uuid: req.params.uuid,
+        title_before: result.title_before,
+        first_name: result.first_name,
+        middle_name: result.middle_name,
+        last_name: result.last_name,
+        title_after: result.title_after,
+        picture_url: result.picture_url,
+        location: result.location,
+        claim: result.claim,
+        bio: result.bio,
+        tags: result.tags,
+        price_per_hour: result.price_per_hour,
+        contact: result.contact
+      })
     })
   } catch (error) {
     return res.json({

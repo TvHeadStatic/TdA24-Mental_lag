@@ -96,7 +96,7 @@ router.post('/lecturers', function(req, res, next) {
     return res.json({
       status: 200,
       success: true,
-      UUID: result.UUID,
+      uuid: result.UUID,
       title_before: result.title_before,
       first_name: result.first_name,
       middle_name: result.middle_name,
@@ -203,7 +203,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
       return res.json({
         status: 200,
         success: true,
-        UUID: result.UUID,
+        uuid: result.UUID,
         title_before: result.title_before,
         first_name: result.first_name,
         middle_name: result.middle_name,

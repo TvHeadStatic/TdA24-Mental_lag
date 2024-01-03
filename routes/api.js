@@ -74,7 +74,6 @@ router.post('/lecturers', function(req, res, next) {
     for (var x = 0; x < tags.length; x++) {
       tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
     }
-    let the_key
     db.run(sql, [
       UUID,
       title_before,
@@ -91,14 +90,13 @@ router.post('/lecturers', function(req, res, next) {
       JSON.stringify(contact)
     ], (err) => {
       if (err) return console.error(err)
-      the_key = UUID
       console.log("saved:", UUID, first_name, middle_name, last_name, tags, contact)
     })
     let result = req.body
     return res.json({
       status: 200,
       success: true,
-      uuid: the_key,
+      uuid: UUID,
       title_before: result.title_before,
       first_name: result.first_name,
       middle_name: result.middle_name,

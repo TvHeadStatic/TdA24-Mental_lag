@@ -92,10 +92,22 @@ router.post('/lecturers', function(req, res, next) {
       if (err) return console.error(err)
       console.log("saved:", UUID, first_name, middle_name, last_name, tags, contact)
     })
+    let result = req.body
     return res.json({
       status: 200,
       success: true,
-      response: req.body
+      UUID: result.UUID,
+      first_name: result.first_name,
+      middle_name: result.middle_name,
+      last_name: result.last_name,
+      title_after: result.title_after,
+      picture_url: result.picture_url,
+      location: result.location,
+      claim: result.claim,
+      bio: result.bio,
+      tags: result.tags,
+      price_per_hour: result.price_per_hour,
+      contact: result.contact
     })
   } catch (error) {
     return res.json({

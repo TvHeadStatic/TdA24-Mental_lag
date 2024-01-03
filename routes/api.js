@@ -164,18 +164,18 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         status: 200,
         success: true,
         uuid: req.params.uuid,
-        title_before: result.title_before || "",
-        first_name: result.first_name || "",
-        middle_name: result.middle_name || "",
-        last_name: result.last_name || "",
-        title_after: result.title_after || "",
-        picture_url: result.picture_url || "",
-        location: result.location || "",
-        claim: result.claim || "",
-        bio: result.bio || "",
-        tags: result.tags || "{}",
-        price_per_hour: result.price_per_hour || "",
-        contact: result.contact || "{}"
+        title_before: result.title_before,
+        first_name: result.first_name,
+        middle_name: result.middle_name,
+        last_name: result.last_name,
+        title_after: result.title_after,
+        picture_url: result.picture_url,
+        location: result.location,
+        claim: result.claim,
+        bio: result.bio,
+        tags: result.tags,
+        price_per_hour: result.price_per_hour,
+        contact: result.contact
       })
     })
   } catch (error) {

@@ -198,7 +198,23 @@ router.get('/lecturers/:uuid', function(req, res, next) {
         rows[0].tags = JSON.parse(rows[0].tags)
         rows[0].contact = JSON.parse(rows[0].contact)
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true }, rows)
+      let result = rows
+      return res.json({
+        status: 200,
+        success: true,
+        UUID: result.UUID,
+        first_name: result.first_name,
+        middle_name: result.middle_name,
+        last_name: result.last_name,
+        title_after: result.title_after,
+        picture_url: result.picture_url,
+        location: result.location,
+        claim: result.claim,
+        bio: result.bio,
+        tags: result.tags,
+        price_per_hour: result.price_per_hour,
+        contact: result.contact
+      })
     })
   } catch (error) {
     return res.json({

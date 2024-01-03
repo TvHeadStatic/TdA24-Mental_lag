@@ -95,6 +95,7 @@ router.post('/lecturers', function(req, res, next) {
     return res.json({
       status: 200,
       success: true,
+      response: req.body
     })
   } catch (error) {
     return res.json({
@@ -145,7 +146,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
           rows[x].contact = JSON.parse(rows[x].contact)
         }
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
+      return res.json({ status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({
@@ -166,7 +167,7 @@ router.get('/lecturers', function(req, res, next) {
           rows[x].contact = JSON.parse(rows[x].contact)
         }
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
+      return res.json({ status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({

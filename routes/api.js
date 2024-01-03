@@ -220,7 +220,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
     })
   } catch (error) {
     return res.json({
-      status: 400,
+      status: 404,
       success: false,
     })
   }

@@ -136,10 +136,16 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     sql = sql.substring(0, sql.length - 2)
     sql += ` WHERE UUID LIKE '%${req.params.uuid}%'`
     console.log(sql)
-    db.run(sql, [], (err, response) => {
+    db.run(sql, [], (err, rows) => {
       if (err) return console.error(err)
       console.log("updated:", req.body)
-      return res.json({ secret: "The cake is a lie", status: 200, success: true }, response)
+    try {
+        for(var x = 0; x < rows.length; x++) {
+          rows[x].tags = JSON.parse(rows[x].tags)
+          rows[x].contact = JSON.parse(rows[x].contact)
+        }
+      } catch (error) { return res.json({ status: 400, success: false, })}
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({
@@ -152,15 +158,15 @@ router.put('/lecturers/:uuid', function(req, res, next) {
 router.get('/lecturers', function(req, res, next) {
   sql = "SELECT * FROM lecturer"
   try {
-    db.all(sql, [], (err, response) => {
+    db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
       try {
-        for(var x = 0; x < response.length; x++) {
-          response[x].tags = JSON.parse(response[x].tags)
-          response[x].contact = JSON.parse(response[x].contact)
+        for(var x = 0; x < rows.length; x++) {
+          rows[x].tags = JSON.parse(rows[x].tags)
+          rows[x].contact = JSON.parse(rows[x].contact)
         }
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true }, response)
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({
@@ -173,13 +179,13 @@ router.get('/lecturers', function(req, res, next) {
 router.get('/lecturers/:uuid', function(req, res, next) {
   sql = `SELECT * FROM lecturer WHERE UUID LIKE '%${req.params.uuid}%'`
   try {
-    db.all(sql, [], (err, response) => {
+    db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
       try {
-        response[0].tags = JSON.parse(response[0].tags)
-        response[0].contact = JSON.parse(response[0].contact)
+        rows[0].tags = JSON.parse(rows[0].tags)
+        rows[0].contact = JSON.parse(rows[0].contact)
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ secret: "The cake is a lie", status: 200, success: true }, response)
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({

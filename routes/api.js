@@ -136,13 +136,10 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     sql = sql.substring(0, sql.length - 2)
     sql += ` WHERE UUID LIKE '%${req.params.uuid}%'`
     console.log(sql)
-    db.run(sql, [], (err) => {
+    db.run(sql, [], (err, rows) => {
       if (err) return console.error(err)
       console.log("updated:", req.body)
-    })
-    return res.json({
-      status: 200,
-      success: true,
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, rows })
     })
   } catch (error) {
     return res.json({
@@ -163,7 +160,7 @@ router.get('/lecturers', function(req, res, next) {
           rows[x].contact = JSON.parse(rows[x].contact)
         }
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({response: { secret: "The cake is a lie", status: 200, success: true, rows }})
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, rows })
     })
   } catch (error) {
     return res.json({
@@ -182,7 +179,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
         rows[0].tags = JSON.parse(rows[0].tags)
         rows[0].contact = JSON.parse(rows[0].contact)
       } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({response: { secret: "The cake is a lie", status: 200, success: true, rows }})
+      return res.json({ secret: "The cake is a lie", status: 200, success: true, rows })
     })
   } catch (error) {
     return res.json({

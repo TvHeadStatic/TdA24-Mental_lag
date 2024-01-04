@@ -136,6 +136,11 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       price_per_hour,
       contact
     } = req.body
+    if (tags.length > 0 && tags != null) {
+      for (var x = 0; x < tags.length; x++) {
+        tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
+      }
+    }
     sql = `UPDATE lecturer SET `
     if (title_before != null) { sql += `title_before = '${title_before}', ` }
     if (first_name != null) { sql += `first_name = '${first_name}', ` }
@@ -161,11 +166,6 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       //     if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
       //   }
       // } catch (error) { return res.status(400).json({ status: 400, success: false, })}
-      if (tags.length > 0 && tags != null) {
-        for (var x = 0; x < tags.length; x++) {
-          tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
-        }
-      }
       let result = req.body
       return res.status(200).json({
         status: 200,

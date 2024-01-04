@@ -71,7 +71,7 @@ router.post('/lecturers', function(req, res, next) {
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
     if (UUID == null) UUID = crypto.randomUUID()
-    if (tags != null) { 
+    if (tags.length > 0 || tags != null) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }

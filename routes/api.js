@@ -15,7 +15,7 @@ var router = express.Router();
 router.use(bodyParser.json());
 var sql = `
 CREATE TABLE lecturer(
-  UUID VARCHAR(36) PRIMARY KEY,
+  uuid VARCHAR(36) PRIMARY KEY,
   title_before,
   first_name,
   middle_name,
@@ -41,7 +41,7 @@ router.get('/', function(req, res, next) {
 router.post('/lecturers', function(req, res, next) {
   try {
     var {
-      UUID,
+      uuid,
       title_before,
       first_name,
       middle_name,
@@ -56,7 +56,7 @@ router.post('/lecturers', function(req, res, next) {
       contact
     } = req.body
     sql = `INSERT INTO lecturer(
-      UUID,
+      uuid,
       title_before,
       first_name,
       middle_name,
@@ -70,14 +70,14 @@ router.post('/lecturers', function(req, res, next) {
       price_per_hour,
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
-    if (UUID == null) UUID = crypto.randomUUID()
+    if (uuid == null) uuid = crypto.randomUUID()
     if (tags.length > 0 || tags != null) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }
     }
     db.run(sql, [
-      UUID,
+      uuid,
       title_before,
       first_name,
       middle_name,
@@ -92,13 +92,13 @@ router.post('/lecturers', function(req, res, next) {
       JSON.stringify(contact)
     ], (err) => {
       if (err) return console.error(err)
-      console.log("saved:", UUID, first_name, middle_name, last_name, tags, contact)
+      console.log("saved:", uuid, first_name, middle_name, last_name, tags, contact)
     })
     let result = req.body
     return res.status(200).json({
       status: 200,
       success: true,
-      uuid: UUID,
+      uuid: uuid,
       title_before: result.title_before,
       first_name: result.first_name,
       middle_name: result.middle_name,
@@ -155,7 +155,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     if (price_per_hour != null) { sql += `price_per_hour = '${price_per_hour}', ` }
     if (contact != null) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
     sql = sql.substring(0, sql.length - 2)
-    sql += ` WHERE UUID LIKE '%${req.params.uuid}%'`
+    sql += ` WHERE uuid LIKE '%${req.params.uuid}%'`
     console.log(sql)
     db.run(sql, [], (err) => {
       if (err) return console.error(err)
@@ -215,7 +215,7 @@ router.get('/lecturers', function(req, res, next) {
 });
 
 router.get('/lecturers/:uuid', function(req, res, next) {
-  sql = `SELECT * FROM lecturer WHERE UUID LIKE '%${req.params.uuid}%'`
+  sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
   try {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
@@ -227,7 +227,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
       return res.status(200).json({
         status: 200,
         success: true,
-        uuid: result.UUID,
+        uuid: result.uuid,
         title_before: result.title_before,
         first_name: result.first_name,
         middle_name: result.middle_name,
@@ -251,7 +251,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
 });
 
 router.delete('/lecturers/:uuid', function(req, res, next) {
-  sql = `DELETE FROM lecturer WHERE UUID LIKE '%${req.params.uuid}%'`
+  sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
   try {
     db.run(sql, [], (err) => {
       if (err) return console.error(err)

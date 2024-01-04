@@ -136,7 +136,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       price_per_hour,
       contact
     } = req.body
-    if (tags.length > 0 && tags != null) {
+    if (tags.length > 0 || tags != null) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }

@@ -161,7 +161,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       //     if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
       //   }
       // } catch (error) { return res.status(400).json({ status: 400, success: false, })}
-      if (tags.length > 0 || tags != null) {
+      if (tags.length > 0 && tags != null) {
         for (var x = 0; x < tags.length; x++) {
           tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
         }

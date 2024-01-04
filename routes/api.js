@@ -204,7 +204,7 @@ router.get('/lecturers', function(req, res, next) {
           if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
         }
       } catch (error) { return res.status(400).json({ status: 400, success: false, })}
-      return res.status(200).json({ status: 200, success: true, response: rows })
+      return res.status(200).json(rows)
     })
   } catch (error) {
     return res.json({

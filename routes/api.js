@@ -216,7 +216,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
       try {
-        if (rows[0].length > 0 && rows[0] != null) {
+        if (rows[0] != null) {
           if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
           if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
         }

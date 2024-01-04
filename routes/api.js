@@ -152,15 +152,15 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     sql = sql.substring(0, sql.length - 2)
     sql += ` WHERE UUID LIKE '%${req.params.uuid}%'`
     console.log(sql)
-    db.run(sql, [], (err, rows) => {
+    db.run(sql, [], (err) => {
       if (err) return console.error(err)
       console.log("updated:", req.body)
-      try {
-        for(var x = 0; x < rows.length; x++) {
-          if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
-          if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
-        }
-      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
+      // try {
+      //   for(var x = 0; x < rows.length; x++) {
+      //     if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
+      //     if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
+      //   }
+      // } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       let result = req.body
       let emptyStr = "mt"
       return res.status(200).json({
@@ -194,12 +194,12 @@ router.get('/lecturers', function(req, res, next) {
   try {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
-      // try {
-      //   for(var x = 0; x < rows.length; x++) {
-      //     if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
-      //     if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
-      //   }
-      // } catch (error) { return res.status(400).json({ status: 400, success: false, })}
+      try {
+        for(var x = 0; x < rows.length; x++) {
+          if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
+          if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
+        }
+      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       return res.status(200).json({ status: 200, success: true, response: rows })
     })
   } catch (error) {

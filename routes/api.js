@@ -215,12 +215,10 @@ router.get('/lecturers/:uuid', function(req, res, next) {
   try {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
-      try {
         if (rows.length < 1) {
-          if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
-          if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
+          if (rows[0].tags != null) { try { rows[0].tags = JSON.parse(rows[0].tags) } catch (error) { return res.status(400).json({ status: 400, success: false, })} }
+          if (rows[0].contact != null) { try { rows[0].contact = JSON.parse(rows[0].contact) } catch (error) { return res.status(400).json({ status: 400, success: false, })} }
         }
-      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       let result = rows[0]
       return res.status(200).json({
         status: 200,

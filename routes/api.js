@@ -162,23 +162,22 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       //   }
       // } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       let result = req.body
-      let emptyStr = "mt"
       return res.status(200).json({
         status: 200,
         success: true,
-        uuid: req.params.uuid || emptyStr,
-        title_before: result.title_before || emptyStr,
-        first_name: result.first_name || emptyStr,
-        middle_name: result.middle_name || emptyStr,
-        last_name: result.last_name || emptyStr,
-        title_after: result.title_after || emptyStr,
-        picture_url: result.picture_url || emptyStr,
-        location: result.location || emptyStr,
-        claim: result.claim || emptyStr,
-        bio: result.bio || emptyStr,
-        tags: result.tags || emptyStr,
-        price_per_hour: result.price_per_hour || emptyStr,
-        contact: result.contact || emptyStr,
+        uuid: req.params.uuid || "mt",
+        title_before: result.title_before || "mt",
+        first_name: result.first_name || "mt",
+        middle_name: result.middle_name || "mt",
+        last_name: result.last_name || "mt",
+        title_after: result.title_after || "mt",
+        picture_url: result.picture_url || "mt",
+        location: result.location || "mt",
+        claim: result.claim || "mt",
+        bio: result.bio || "mt",
+        tags: result.tags || "mt",
+        price_per_hour: result.price_per_hour || "mt",
+        contact: result.contact || "mt"
       })
     })
   } catch (error) {

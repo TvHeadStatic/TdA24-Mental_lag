@@ -71,8 +71,10 @@ router.post('/lecturers', function(req, res, next) {
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
     if (UUID == null) UUID = crypto.randomUUID()
-    for (var x = 0; x < tags.length; x++) {
-      tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
+    if (tags != null) { 
+      for (var x = 0; x < tags.length; x++) {
+        tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
+      }
     }
     db.run(sql, [
       UUID,
@@ -93,7 +95,7 @@ router.post('/lecturers', function(req, res, next) {
       console.log("saved:", UUID, first_name, middle_name, last_name, tags, contact)
     })
     let result = req.body
-    return res.json({
+    return res.status(200).json({
       status: 200,
       success: true,
       uuid: UUID,
@@ -111,7 +113,7 @@ router.post('/lecturers', function(req, res, next) {
       contact: result.contact
     })
   } catch (error) {
-    return res.json({
+    return res.status(400).json({
       status: 400,
       success: false,
     })
@@ -155,31 +157,32 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       console.log("updated:", req.body)
       try {
         for(var x = 0; x < rows.length; x++) {
-          rows[x].tags = JSON.parse(rows[x].tags)
-          rows[x].contact = JSON.parse(rows[x].contact)
+          if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
+          if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
         }
-      } catch (error) { return res.json({ status: 400, success: false, })}
+      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       let result = req.body
-      return res.json({
+      let emptyStr = "mt"
+      return res.status(200).json({
         status: 200,
         success: true,
-        uuid: req.params.uuid,
-        title_before: result.title_before,
-        first_name: result.first_name,
-        middle_name: result.middle_name,
-        last_name: result.last_name,
-        title_after: result.title_after,
-        picture_url: result.picture_url,
-        location: result.location,
-        claim: result.claim,
-        bio: result.bio,
-        tags: result.tags,
-        price_per_hour: result.price_per_hour,
-        contact: result.contact
+        uuid: req.params.uuid || emptyStr,
+        title_before: result.title_before || emptyStr,
+        first_name: result.first_name || emptyStr,
+        middle_name: result.middle_name || emptyStr,
+        last_name: result.last_name || emptyStr,
+        title_after: result.title_after || emptyStr,
+        picture_url: result.picture_url || emptyStr,
+        location: result.location || emptyStr,
+        claim: result.claim || emptyStr,
+        bio: result.bio || emptyStr,
+        tags: result.tags || emptyStr,
+        price_per_hour: result.price_per_hour || emptyStr,
+        contact: result.contact || emptyStr,
       })
     })
   } catch (error) {
-    return res.json({
+    return res.status(400).json({
       status: 400,
       success: false,
     })
@@ -193,11 +196,11 @@ router.get('/lecturers', function(req, res, next) {
       if (err) return console.error(err)
       try {
         for(var x = 0; x < rows.length; x++) {
-          rows[x].tags = JSON.parse(rows[x].tags)
-          rows[x].contact = JSON.parse(rows[x].contact)
+          if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
+          if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
         }
-      } catch (error) { return res.json({ status: 400, success: false, })}
-      return res.json({ status: 200, success: true, response: rows })
+      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
+      return res.status(200).json({ status: 200, success: true, response: rows })
     })
   } catch (error) {
     return res.json({
@@ -213,11 +216,11 @@ router.get('/lecturers/:uuid', function(req, res, next) {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
       try {
-        rows[0].tags = JSON.parse(rows[0].tags)
-        rows[0].contact = JSON.parse(rows[0].contact)
-      } catch (error) { return res.json({ status: 404, success: false, })}
+        if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
+        if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
+      } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       let result = rows[0]
-      return res.json({
+      return res.status(200).json({
         status: 200,
         success: true,
         uuid: result.UUID,
@@ -236,7 +239,7 @@ router.get('/lecturers/:uuid', function(req, res, next) {
       })
     })
   } catch (error) {
-    return res.json({
+    return res.status(404).json({
       status: 404,
       success: false,
     })
@@ -250,9 +253,9 @@ router.delete('/lecturers/:uuid', function(req, res, next) {
       if (err) return console.error(err)
       console.log("removed:", req.params.uuid)
     })
-    return res.json({ status: 200, success: true })
+    return res.status(200).json({ status: 200, success: true })
   } catch (error) {
-    return res.json({
+    return res.status(400).json({
       status: 400,
       success: false,
     })

@@ -152,7 +152,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     if (req.body.hasOwnProperty('picture_url')) { sql += `picture_url = '${picture_url}', ` }
     if (req.body.hasOwnProperty('location')) { sql += `location = '${location}', ` }
     if (req.body.hasOwnProperty('claim')) { sql += `claim = '${claim}', ` }
-    if (req.body.hasOwnProperty('bio') && req.body.bio != null) { sql += `bio = '${bio}', ` }
+    if (req.body.bio != null) { sql += `bio = '${bio}', ` }
     if (req.body.hasOwnProperty('tags')) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
     if (req.body.hasOwnProperty('price_per_hour')) { sql += `price_per_hour = '${price_per_hour}', ` }
     if (req.body.hasOwnProperty('contact')) { sql += `contact = json('${JSON.stringify(contact)}'), ` }

@@ -70,8 +70,8 @@ router.post('/lecturers', function(req, res, next) {
       price_per_hour,
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
-    if (uuid == null) uuid = crypto.randomUUID()
-    if (tags != null) {
+    if (req.body.hasOwnProperty('uuid')) uuid = crypto.randomUUID()
+    if (req.body.hasOwnProperty('tags')) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }
@@ -136,24 +136,24 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       price_per_hour,
       contact
     } = req.body
-    if (tags.length > 0 || tags != null) {
+    if (req.body.hasOwnProperty('tags')) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }
     }
     sql = `UPDATE lecturer SET `
-    if (title_before != null) { sql += `title_before = '${title_before}', ` }
-    if (first_name != null) { sql += `first_name = '${first_name}', ` }
-    if (middle_name != null) { sql += `middle_name = '${middle_name}', ` }
-    if (last_name != null) { sql += `last_name = '${last_name}', ` }
-    if (title_after != null) { sql += `title_after = '${title_after}', ` }
-    if (picture_url != null) { sql += `picture_url = '${picture_url}', ` }
-    if (location != null) { sql += `location = '${location}', ` }
-    if (claim != null) { sql += `claim = '${claim}', ` }
-    if (bio != null) { sql += `bio = '${bio}', ` }
-    if (tags != null) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
-    if (price_per_hour != null) { sql += `price_per_hour = '${price_per_hour}', ` }
-    if (contact != null) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
+    if (req.body.hasOwnProperty('title_before')) { sql += `title_before = '${title_before}', ` }
+    if (req.body.hasOwnProperty('first_name')) { sql += `first_name = '${first_name}', ` }
+    if (req.body.hasOwnProperty('middle_name')) { sql += `middle_name = '${middle_name}', ` }
+    if (req.body.hasOwnProperty('last_name')) { sql += `last_name = '${last_name}', ` }
+    if (req.body.hasOwnProperty('title_after')) { sql += `title_after = '${title_after}', ` }
+    if (req.body.hasOwnProperty('picture_url')) { sql += `picture_url = '${picture_url}', ` }
+    if (req.body.hasOwnProperty('location')) { sql += `location = '${location}', ` }
+    if (req.body.hasOwnProperty('claim')) { sql += `claim = '${claim}', ` }
+    if (req.body.hasOwnProperty('bio')) { sql += `bio = '${bio}', ` }
+    if (req.body.hasOwnProperty('tags')) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
+    if (req.body.hasOwnProperty('price_per_hour')) { sql += `price_per_hour = '${price_per_hour}', ` }
+    if (req.body.hasOwnProperty('contact')) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
     sql = sql.substring(0, sql.length - 2)
     sql += ` WHERE uuid LIKE '%${req.params.uuid}%'`
     console.log(sql)
@@ -200,8 +200,8 @@ router.get('/lecturers', function(req, res, next) {
       if (err) return console.error(err)
       try {
         for(var x = 0; x < rows.length; x++) {
-          if (rows[x].tags != null) { rows[x].tags = JSON.parse(rows[x].tags) }
-          if (rows[x].contact != null) { rows[x].contact = JSON.parse(rows[x].contact) }
+          if (rows[x].hasOwnProperty('tags')) { rows[x].tags = JSON.parse(rows[x].tags) }
+          if (rows[x].hasOwnProperty('contact')) { rows[x].contact = JSON.parse(rows[x].contact) }
         }
       } catch (error) { return res.status(400).json({ status: 400, success: false, })}
       return res.status(200).json(rows)
@@ -220,8 +220,8 @@ router.get('/lecturers/:uuid', function(req, res, next) {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
       try {
-        if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
-        if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
+        if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
+        if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
       } catch (error) { return res.status(404).json({ status: 404, success: false, })}
       let result = rows[0]
       return res.status(200).json({

@@ -179,7 +179,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         picture_url,
         location,
         claim,
-        // bio: result.bio || "None",
+        bio: "None",
         tags,
         price_per_hour,
         contact

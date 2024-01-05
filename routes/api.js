@@ -170,7 +170,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       return res.status(200).json({
         status: 200,
         success: true,
-        uuid: req.params.uuid || None,
+        uuid: req.params.uuid || "None",
         title_before: result.title_before || "None",
         first_name: result.first_name || "None",
         middle_name: result.middle_name || "None",

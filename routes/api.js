@@ -151,6 +151,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         try {
           oldresult = rows[0]
         } catch (error) { return res.status(404).json({ status: 404, success: false, })}
+        if (!oldresult.hasOwnProperty('uuid')) return res.status(404).json({ status: 404, success: false, })
       })
     } catch (error) {
       return res.status(404).json({
@@ -176,7 +177,6 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     console.log(sql)
     db.run(sql, [], (err) => {
       if (err) return console.error(err)
-      if (!oldresult.hasOwnProperty('uuid')) return res.status(404).json({ status: 404, success: false, })
       console.log("updated:", req.body)
       // try {
       //   for(var x = 0; x < rows.length; x++) {

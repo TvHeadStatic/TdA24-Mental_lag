@@ -148,7 +148,9 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     try {
       db.all(sql, [], (err, rows) => {
         if (err) return res.status(404).json({ status: 404, success: false, })
-        oldresult = rows[0]
+        try {
+          oldresult = rows[0]
+        } catch (error) { return res.status(404).json({ status: 404, success: false, })}
       })
     } catch (error) {
       return res.status(404).json({

@@ -144,6 +144,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       }
     }
     sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+    sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     let oldresult
     try {
       db.all(sql, [], (err, rows) => {
@@ -151,8 +152,8 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         try {
           if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
           if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
+          oldresult = rows[0]
         } catch (error) { return res.status(404).json({ status: 404, success: false, })}
-        oldresult = rows[0]
       })
     } catch (error) {
       return res.status(404).json({

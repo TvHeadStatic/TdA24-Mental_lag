@@ -147,7 +147,6 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     let oldresult
     db.all(sql, [], (err, rows) => {
       if (err) return res.status(404).json({ status: 404, success: false, })
-      if (rows[0].length < 1) return res.status(404).json({ status: 404, success: false, })
       oldresult = rows[0]
     })
     sql = `UPDATE lecturer SET `
@@ -168,6 +167,11 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     console.log(sql)
     db.run(sql, [], (err) => {
       if (err) return console.error(err)
+      try {
+        if (oldresult.uuid == null) return res.status(404).json({ status: 404, success: false, })
+      } catch {
+        return res.status(404).json({ status: 404, success: false, })
+      }
       console.log("updated:", req.body)
       // try {
       //   for(var x = 0; x < rows.length; x++) {

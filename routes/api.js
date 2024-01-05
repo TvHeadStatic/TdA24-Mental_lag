@@ -143,6 +143,24 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }
     }
+    sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+    sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+    let oldresult
+    try {
+      db.all(sql, [], (err, rows) => {
+        if (err) return console.error(err)
+        try {
+          if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
+          if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
+        } catch (error) { return res.status(404).json({ status: 404, success: false, })}
+        oldresult = rows[0]
+      })
+    } catch (error) {
+      return res.status(404).json({
+        status: 404,
+        success: false,
+      })
+    }
     sql = `UPDATE lecturer SET `
     if (req.body.hasOwnProperty('title_before')) { sql += `title_before = '${title_before}', ` }
     if (req.body.hasOwnProperty('first_name')) { sql += `first_name = '${first_name}', ` }
@@ -152,7 +170,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     if (req.body.hasOwnProperty('picture_url')) { sql += `picture_url = '${picture_url}', ` }
     if (req.body.hasOwnProperty('location')) { sql += `location = '${location}', ` }
     if (req.body.hasOwnProperty('claim')) { sql += `claim = '${claim}', ` }
-    if (req.body.hasOwnProperty('bio') && req.body.bio == null) { sql += `bio = '${bio}', ` }
+    if (req.body.hasOwnProperty('bio')) { sql += `bio = '${bio}', ` }
     if (req.body.hasOwnProperty('tags')) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
     if (req.body.hasOwnProperty('price_per_hour')) { sql += `price_per_hour = '${price_per_hour}', ` }
     if (req.body.hasOwnProperty('contact')) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
@@ -173,18 +191,18 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         status: 200,
         success: true,
         uuid: req.params.uuid || "None",
-        title_before: result.title_before || "None",
-        first_name: result.first_name || "None",
-        middle_name: result.middle_name || "None",
-        last_name: result.last_name || "None",
-        title_after: result.title_after || "None",
-        picture_url: result.picture_url || "None",
-        location: result.location || "None",
-        claim: result.claim || "None",
-        bio: result.bio || "None",
-        tags: result.tags || "None",
-        price_per_hour: result.price_per_hour || "None",
-        contact: result.contact || "None"
+        title_before: result.title_before || oldresult.title_before || "None",
+        first_name: result.first_name || oldresult.first_name || "None",
+        middle_name: result.middle_name || oldresult.middle_name || "None",
+        last_name: result.last_name || oldresult.last_name || "None",
+        title_after: result.title_after || oldresult.title_after || "None",
+        picture_url: result.picture_url || oldresult.picture_url ||"None",
+        location: result.location || oldresult.location || "None",
+        claim: result.claim || oldresult.claim || "None",
+        bio: result.bio || oldresult.bio || "None",
+        tags: result.tags || oldresult.tags || "None",
+        price_per_hour: result.price_per_hour || oldresult.price_per_hour || "None",
+        contact: result.contact || oldresult.contact || "None"
       })
     })
   } catch (error) {

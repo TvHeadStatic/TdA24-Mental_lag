@@ -70,6 +70,8 @@ router.post('/lecturers', function(req, res, next) {
       price_per_hour,
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
+    if (!req.body.hasOwnProperty('first_name')) return res.status(400).json({ status: 400, success: false, })
+    if (!req.body.hasOwnProperty('last_name')) return res.status(400).json({ status: 400, success: false, })
     if (uuid == null) uuid = crypto.randomUUID()
     if (req.body.hasOwnProperty('tags')) {
       for (var x = 0; x < tags.length; x++) {

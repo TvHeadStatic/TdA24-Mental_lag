@@ -133,7 +133,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       picture_url,
       location,
       claim,
-      // bio,
+      bio,
       tags,
       price_per_hour,
       contact
@@ -152,7 +152,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     if (req.body.hasOwnProperty('picture_url') || req.body.picture_url != null) { sql += `picture_url = '${picture_url}', ` }
     if (req.body.hasOwnProperty('location') || req.body.location != null) { sql += `location = '${location}', ` }
     if (req.body.hasOwnProperty('claim') || req.body.claim != null) { sql += `claim = '${claim}', ` }
-    // if (req.body.hasOwnProperty('bio') || req.body.bio != null) { sql += `bio = '${bio}', ` }
+    if (req.body.hasOwnProperty('bio')) { sql += `bio = '${bio}', ` }
     if (req.body.hasOwnProperty('tags') || req.body.tags != null) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
     if (req.body.hasOwnProperty('price_per_hour') || req.body.price_per_hour != null) { sql += `price_per_hour = '${price_per_hour}', ` }
     if (req.body.hasOwnProperty('contact') || req.body.contact != null) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
@@ -181,7 +181,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         picture_url: result.picture_url || "None",
         location: result.location || "None",
         claim: result.claim || "None",
-        bio: "None",
+        bio: result.bio || "None",
         tags: result.tags || "None",
         price_per_hour: result.price_per_hour || "None",
         contact: result.contact || "None"

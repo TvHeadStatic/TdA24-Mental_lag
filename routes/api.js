@@ -144,7 +144,6 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       }
     }
     sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
-    sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     let oldresult
     try {
       db.all(sql, [], (err, rows) => {

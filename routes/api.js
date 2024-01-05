@@ -144,18 +144,18 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       }
     }
     sql = `UPDATE lecturer SET `
-    if (req.body.hasOwnProperty('title_before')) { sql += `title_before = '${title_before}', ` }
-    if (req.body.hasOwnProperty('first_name')) { sql += `first_name = '${first_name}', ` }
-    if (req.body.hasOwnProperty('middle_name')) { sql += `middle_name = '${middle_name}', ` }
-    if (req.body.hasOwnProperty('last_name')) { sql += `last_name = '${last_name}', ` }
-    if (req.body.hasOwnProperty('title_after')) { sql += `title_after = '${title_after}', ` }
-    if (req.body.hasOwnProperty('picture_url')) { sql += `picture_url = '${picture_url}', ` }
-    if (req.body.hasOwnProperty('location')) { sql += `location = '${location}', ` }
-    if (req.body.hasOwnProperty('claim')) { sql += `claim = '${claim}', ` }
-    // if (req.body.hasOwnProperty('bio')) { sql += `bio = '${bio}', ` }
-    if (req.body.hasOwnProperty('tags')) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
-    if (req.body.hasOwnProperty('price_per_hour')) { sql += `price_per_hour = '${price_per_hour}', ` }
-    if (req.body.hasOwnProperty('contact')) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
+    if (req.body.hasOwnProperty('title_before') || req.body.title_before == null) { sql += `title_before = '${title_before}', ` }
+    if (req.body.hasOwnProperty('first_name') || req.body.first_name == null) { sql += `first_name = '${first_name}', ` }
+    if (req.body.hasOwnProperty('middle_name') || req.body.middle_name == null) { sql += `middle_name = '${middle_name}', ` }
+    if (req.body.hasOwnProperty('last_name') || req.body.last_name == null) { sql += `last_name = '${last_name}', ` }
+    if (req.body.hasOwnProperty('title_after') || req.body.title_after == null) { sql += `title_after = '${title_after}', ` }
+    if (req.body.hasOwnProperty('picture_url') || req.body.picture_url == null) { sql += `picture_url = '${picture_url}', ` }
+    if (req.body.hasOwnProperty('location') || req.body.location == null) { sql += `location = '${location}', ` }
+    if (req.body.hasOwnProperty('claim') || req.body.claim == null) { sql += `claim = '${claim}', ` }
+    if (req.body.hasOwnProperty('bio') || req.body.bio == null) { sql += `bio = '${bio}', ` }
+    if (req.body.hasOwnProperty('tags') || req.body.tags == null) { sql += `tags = json('${JSON.stringify(tags)}'), ` }
+    if (req.body.hasOwnProperty('price_per_hour') || req.body.price_per_hour == null) { sql += `price_per_hour = '${price_per_hour}', ` }
+    if (req.body.hasOwnProperty('contact') || req.body.contact == null) { sql += `contact = json('${JSON.stringify(contact)}'), ` }
     sql = sql.substring(0, sql.length - 2)
     sql += ` WHERE uuid LIKE '%${req.params.uuid}%'`
     console.log(sql)
@@ -181,7 +181,7 @@ router.put('/lecturers/:uuid', function(req, res, next) {
         picture_url: result.picture_url || "None",
         location: result.location || "None",
         claim: result.claim || "None",
-        // bio: result.bio || "None",
+        bio: result.bio || "None",
         tags: result.tags || "None",
         price_per_hour: result.price_per_hour || "None",
         contact: result.contact || "None"

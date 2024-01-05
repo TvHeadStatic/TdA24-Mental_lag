@@ -124,18 +124,20 @@ router.post('/lecturers', function(req, res, next) {
 
 router.put('/lecturers/:uuid', function(req, res, next) {
   try {
-      var title_before = req.body.title_before || "None"
-      var first_name = req.body.first_name || "None"
-      var middle_name = req.body.middle_name || "None"
-      var last_name = req.body.last_name || "None"
-      var title_after = req.body.title_after || "None"
-      var picture_url = req.body.picture_url || "None"
-      var location = req.body.location || "None"
-      var claim = req.body.claim || "None"
-      // bio = || "None"
-      var tags = req.body.tags || "None"
-      var price_per_hour = req.body.price_per_hour || "None"
-      var contact = req.body.contact || "None"
+    var {
+      title_before,
+      first_name,
+      middle_name,
+      last_name,
+      title_after,
+      picture_url,
+      location,
+      claim,
+      // bio,
+      tags,
+      price_per_hour,
+      contact
+    } = req.body
     if (req.body.hasOwnProperty('tags')) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
@@ -170,19 +172,19 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       return res.status(200).json({
         status: 200,
         success: true,
-        uuid,
-        title_before,
-        first_name,
-        middle_name,
-        last_name,
-        title_after,
-        picture_url,
-        location,
-        claim,
+        uuid: req.params.uuid || "None",
+        title_before: result.title_before || "None",
+        first_name: result.first_name || "None",
+        middle_name: result.middle_name || "None",
+        last_name: result.last_name || "None",
+        title_after: result.title_after || "None",
+        picture_url: result.picture_url || "None",
+        location: result.location || "None",
+        claim: result.claim || "None",
         bio: "None",
-        tags,
-        price_per_hour,
-        contact
+        tags: result.tags || "None",
+        price_per_hour: result.price_per_hour || "None",
+        contact: result.contact || "None"
       })
     })
   } catch (error) {

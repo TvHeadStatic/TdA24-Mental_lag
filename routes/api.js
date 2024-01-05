@@ -258,20 +258,20 @@ router.delete('/lecturers/:uuid', function(req, res, next) {
       if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
       if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
     } catch (error) { return res.status(404).json({ status: 404, success: false, })}
+    sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+    try {
+      db.run(sql, [], (err) => {
+        if (err) return console.error(err)
+        console.log("removed:", req.params.uuid)
+      })
+      return res.status(200).json({ status: 200, success: true })
+    } catch (error) {
+      return res.status(404).json({
+        status: 404,
+        success: false,
+      })
+    }
   })} catch(error) { return res.status(404).json({ status: 404, success: false }) }
-  sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
-  try {
-    db.run(sql, [], (err) => {
-      if (err) return console.error(err)
-      console.log("removed:", req.params.uuid)
-    })
-    return res.status(200).json({ status: 200, success: true })
-  } catch (error) {
-    return res.status(404).json({
-      status: 404,
-      success: false,
-    })
-  }
 });
 
 

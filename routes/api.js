@@ -265,12 +265,23 @@ router.get('/lecturers/:uuid', function(req, res, next) {
 
 router.delete('/lecturers/:uuid', function(req, res, next) {
   try {
+    sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+    let oldresult
+    db.all(sql, [], (err, rows) => {
+      if (err) return res.status(404).json({ status: 404, success: false, })
+      oldresult = rows[0]
+    })
     sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     db.run(sql, [], (err) => {
       if (err) return res.status(404).json({ status: 404, success: false })
+      try {
+        if (oldresult.uuid == null) return res.status(404).json({ status: 404, success: false, })
+      } catch {
+        return res.status(404).json({ status: 404, success: false, })
+      }
       console.log("removed:", req.params.uuid)
+      return res.status(200).json({ status: 200, success: true })
     })
-    return res.status(200).json({ status: 200, success: true })
   } catch(error) { return res.status(404).json({ status: 404, success: false }) }
 });
 

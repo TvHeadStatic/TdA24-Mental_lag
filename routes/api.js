@@ -257,8 +257,10 @@ router.delete('/lecturers/:uuid', function(req, res, next) {
     sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     db.all(sql, [], (err, rows) => {
       if (err || !rows[0].hasOwnProperty('uuid')) return res.status(404).json({ status: 404, success: false, })
-      if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
-      if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
+      try {
+        if (rows[0].hasOwnProperty('tags')) { rows[0].tags = JSON.parse(rows[0].tags) }
+        if (rows[0].hasOwnProperty('contact')) { rows[0].contact = JSON.parse(rows[0].contact) }
+      } catch (error) { return res.status(404).json({ status: 404, success: false, })}
     })
     sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     db.run(sql, [], (err) => {

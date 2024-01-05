@@ -71,7 +71,7 @@ router.post('/lecturers', function(req, res, next) {
       contact
       ) VALUES (?,?,?,?,?,?,?,?,?,?,json(?),?,json(?))`
     if (uuid == null) uuid = crypto.randomUUID()
-    if (tags.length > 0 || tags != null) {
+    if (tags != null) {
       for (var x = 0; x < tags.length; x++) {
         tags[x] = { uuid: crypto.randomUUID(), name: tags[x].name }
       }
@@ -219,10 +219,10 @@ router.get('/lecturers/:uuid', function(req, res, next) {
   try {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)
-      // try {
-      //   if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
-      //   if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
-      // } catch (error) { return res.status(404).json({ status: 404, success: false, })}
+      try {
+        if (rows[0].tags != null) { rows[0].tags = JSON.parse(rows[0].tags) }
+        if (rows[0].contact != null) { rows[0].contact = JSON.parse(rows[0].contact) }
+      } catch (error) { return res.status(404).json({ status: 404, success: false, })}
       let result = rows[0]
       return res.status(200).json({
         status: 200,

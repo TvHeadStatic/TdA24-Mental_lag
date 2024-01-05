@@ -145,19 +145,12 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     }
     sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
     let oldresult
-    try {
-      db.all(sql, [], (err, rows) => {
-        if (err) return res.status(404).json({ status: 404, success: false, })
-        try {
-          oldresult = rows[0]
-        } catch (error) { return res.status(404).json({ status: 404, success: false, })}
-      })
-    } catch (error) {
-      return res.status(404).json({
-        status: 404,
-        success: false,
-      })
-    }
+    db.all(sql, [], (err, rows) => {
+      if (err) return res.status(404).json({ status: 404, success: false, })
+      try {
+        oldresult = rows[0]
+      } catch (error) { return res.status(404).json({ status: 404, success: false, })}
+    })
     sql = `UPDATE lecturer SET `
     if (req.body.hasOwnProperty('title_before')) { sql += `title_before = '${title_before}', ` }
     if (req.body.hasOwnProperty('first_name')) { sql += `first_name = '${first_name}', ` }
@@ -203,8 +196,8 @@ router.put('/lecturers/:uuid', function(req, res, next) {
       })
     })
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(404).json({
+      status: 404,
       success: false,
     })
   }

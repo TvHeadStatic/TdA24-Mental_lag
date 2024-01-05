@@ -1,0 +1,10 @@
+#placeholder-section {
+  color: var(--white);
+  height: 6em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}

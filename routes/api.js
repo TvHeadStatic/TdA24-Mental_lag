@@ -147,11 +147,11 @@ router.put('/lecturers/:uuid', function(req, res, next) {
     let oldresult
     try {
       db.all(sql, [], (err, rows) => {
-        if (err) return res.status(404).json({ status: 404, success: false, })
+        if (err) return console.error(err)
+        if (!rows[0].hasOwnProperty('uuid')) return console.error(err)
         try {
           oldresult = rows[0]
         } catch (error) { return res.status(404).json({ status: 404, success: false, })}
-        if (!oldresult.hasOwnProperty('uuid')) return res.status(404).json({ status: 404, success: false, })
       })
     } catch (error) {
       return res.status(404).json({

@@ -252,6 +252,8 @@ router.get('/lecturers/:uuid', function(req, res, next) {
 
 router.delete('/lecturers/:uuid', function(req, res, next) {
   sql = `SELECT * FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
+  try { db.all(sql, [], (err, rows) => { console.log("exists ", rows)}) }
+  catch (error) { return res.status(404).json({ status: 404, success: false }) }
   sql = `DELETE FROM lecturer WHERE uuid LIKE '%${req.params.uuid}%'`
   try {
     db.run(sql, [], (err) => {

@@ -39,6 +39,64 @@
   font-size: 1.6rem;
 }
 
+#lecturerlist section {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  grid-auto-columns: auto;
+}
+
+#lectfilterbuttons {
+  text-align: left;
+}
+
+.lectprice {
+  color: var(--sunglow);
+  background-color: var(--prussian-blue);
+  width: 12rem;
+  justify-self: center;
+  padding: .15rem;
+  border-radius: .4rem;
+}
+
+.lectimg {
+  max-width: 12.5em;
+  border-radius: .59rem;
+}
+
+.lectgo {
+  background-color: var(--prussian-blue);
+  color: var(--white);
+  border: none;
+  justify-self: center;
+  padding: 0.38rem;
+  border-radius: .4rem;
+}
+
+#lecturerlist h2 {
+  text-align: center;
+  grid-column-end: 1;
+  grid-column-start: 1;
+}
+
+.lecttags {
+  font-size: .5em;
+  grid-column-end: 1;
+  grid-column-start: 1;
+  opacity: .75;
+}
+
+#lecturerlist img {
+  width: 100%;
+  justify-self: center;
+}
+
+#lecturerlist div {
+  text-align: center;
+  padding-right: 1em;
+}
+
 /*Desktop design*/
 @media (orientation: landscape) {
   #about {
@@ -61,6 +119,33 @@
   }
 
   #about-grid-item h1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
     line-height: 1px;
+  }
+
+  #lecturerlist section {
+    grid-auto-columns: 25% 75%;
+  }
+  
+  #lecturerlist h2 {
+    text-align: left;
+    grid-column-end: 3;
+    grid-column-start: 1;
+  }
+  
+  .lecttags {
+    font-size: .75em;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  #lecturerlist img {
+    width: 100%;
+  }
+  
+  #lecturerlist div {
+    text-align: right;
+    padding-right: 1em;
   }
 }

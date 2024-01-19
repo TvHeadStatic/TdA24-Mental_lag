@@ -1,9 +1,10 @@
 var doc = document
 var clamp = 0
-fetch("/lecturer.json")
+
+fetch(`http://localhost:3000/api/lecturers/${uuid}`)
   .then((response) => response.json())
   .then((json) => {
-	  console.log(json.UUID)
+	  console.log(json.uuid)
     doc.getElementById("picture_url").src = json.picture_url
     doc.getElementById("title_before").innerHTML = json.title_before + " "
     doc.getElementById("first_name").innerHTML = json.first_name + " "

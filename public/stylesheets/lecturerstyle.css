@@ -21,6 +21,7 @@
   align-self: start;
   grid-column: 1;
   grid-row: 2;
+  border-radius: .59rem;
 }
 
 /*#full_name {
@@ -35,13 +36,18 @@
   grid-row: 3;
   align-self: center;
   justify-self: center;
+  font-size: 1.003rem;
+  font-weight: bold;
 }
 
 #price_per_hour {
-  color: var(--price);
+  color: var(--sunglow);
   background-color: var(--prussian-blue);
   width: 12rem;
   justify-self: center;
+  padding: .15rem;
+  border-radius: .4rem;
+  font-size: 1.15rem;
 }
 
 #info, #contact {
@@ -66,24 +72,59 @@
   color: var(--white);
   border: none;
   justify-self: center;
+  padding: 0.38rem;
+  border-radius: .4rem;
+  width: 5.5rem;
+  font-size: .89rem;
+  margin-top: .15rem;
 }
 
 #tags {
   color: var(--jet);
   font-weight: bold;
-  font-size: .75rem;
+  font-size: .82rem;
   text-align: center;
 }
 
 #tags > span {
-  border: solid .1rem;
-  margin: .1rem;
-  padding: 0.1rem;
-  line-height: 1rem;
+  margin: .15rem;
+  padding: 0.13rem;
+  line-height: 1.05rem;
   vertical-align: super;
   display: inline-block;
 }
 
 #description {
   font-weight: bold;
+}
+@media (orientation: landscape) {
+  #showMore {
+    padding: 0.55rem;
+    width: 5.9rem;
+    font-size: .87rem;
+    margin-top: .25rem;
+  }
+  
+  
+  #names {
+    font-size: 1.06rem;
+    font-weight: bold;
+  }
+  
+  #price_per_hour {
+    width: 13rem;
+    padding: .22rem;
+    font-size: 1.22rem;
+}
+
+#tags {
+  font-size: .89rem;
+}
+
+#tags > span {
+  margin: .25rem;
+  padding: 0.12rem;
+  line-height: 1.2rem;
+}
+  
 }

@@ -13,34 +13,32 @@ html
       div(class="navholder")
         img(src="/images/TdA_šipka/300ppi/TdA_sipka_bila.png")
         a(href="/" class="active") Home
-        a(href="/lecturer") Lecturer
-        a(href="/about") About
         a(href="javascript:void(0);" class="icon" onclick="nav_bar_expand()")
           i(class="fa fa-bars")
   
     section(id="wrapper")
       section(id="placeholder-section")
       section(class="special-section grid")
-        h1(id="lecturer") Lecturer
-        img(id="picture_url")
-        div(id="names")
-          p(id="full_name")
-            span(id="title_before")
-            span(id="first_name")
-            span(id="middle_name")
-            span(id="last_name")
-            span(id="title_after")
-        div(id="info")
+        div(id="special-section2")
+          div(id="names")
+            h1(id="full_name")
+              span(id="title_before")
+              span(id="first_name")
+              span(id="middle_name")
+              span(id="last_name")
+              span(id="title_after")
+          img(id="picture_url")
           p(id="location")
-          header(id="description") Description:
-          p(id="claim")
-          div(id="bio")
-          button(id="showMore" onclick="Clamp()") Show more
           p(id="price_per_hour")
-        div(id="contact")
-          p(id="telephone_numbers")
-          p(id="emails")
-        p(id="tags")
+          div(id="contact")
+            p(id="telephone_numbers")
+            p(id="emails")
+          div(id="info")
+            header(id="description") Description:
+            p(id="claim")
+            div(id="bio")
+            button(id="showMore" onclick="Clamp()") Show more
+          p(id="tags")
     section(id="footer")
       div
         img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")

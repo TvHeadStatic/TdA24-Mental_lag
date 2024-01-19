@@ -9,31 +9,17 @@
   grid-template-rows: auto;
 }
 
-#lecturer {
-  grid-column: 1;
-  grid-row: 1;
-  text-align: center;
-}
-
 #picture_url {
   max-width: 12.5em;
   justify-self: center;
   align-self: start;
-  grid-column: 1;
   grid-row: 2;
   border-radius: .59rem;
 }
 
-/*#full_name {
-  grid-column: 1;
-  grid-row: 2;
-  text-align: center;
-  align-self: end;
-}*/
-
 #names {
-  grid-column: 1;
-  grid-row: 3;
+  grid-row: 1;
+  text-align: center;
   align-self: center;
   justify-self: center;
   font-size: 1.003rem;
@@ -47,12 +33,21 @@
   justify-self: center;
   padding: .15rem;
   border-radius: .4rem;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  grid-row: 4;
 }
 
 #info, #contact {
   text-align: center;
   display: grid;
+}
+
+#info {
+  grid-row: 6;
+}
+
+#contact{
+  grid-row: 5;
 }
 
 #bio {
@@ -65,6 +60,8 @@
 
 #location {
   font-weight: bold;
+  text-align: center;
+  grid-row: 3;
 }
 
 #showMore {
@@ -84,6 +81,8 @@
   font-weight: bold;
   font-size: .82rem;
   text-align: center;
+  opacity: .2;
+  grid-row: 7;
 }
 
 #tags > span {
@@ -97,12 +96,25 @@
 #description {
   font-weight: bold;
 }
+
+#special-section2 {
+  background: var(--sky-blue);
+  padding: 3em;
+  color: var(--prussian-blue);
+  outline-width: 1em;
+  outline-color: var(--white);
+  outline-style: solid;
+  display: grid;
+  grid-column: 2;
+  grid-template-rows: auto;
+  border-radius: 1rem;
+}
+
+
 @media (orientation: landscape) {
   #showMore {
-    padding: 0.55rem;
-    width: 5.9rem;
-    font-size: .87rem;
-    margin-top: .25rem;
+    opacity: 0;
+    z-index: -1000;
   }
   
   
@@ -111,20 +123,86 @@
     font-weight: bold;
   }
   
+  
+  #tags {
+    font-size: .89rem;
+  }
+  
+  #tags > span {
+    margin: .25rem;
+    padding: 0.12rem;
+    line-height: 1.2rem;
+  }
+
+  #special-section2 {
+    background: var(--sky-blue);
+    padding: 3em;
+    color: var(--prussian-blue);
+    outline-width: 1em;
+    outline-color: var(--white);
+    outline-style: solid;
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    border-radius: 1rem;
+  }
+  
+  #names {
+    grid-row: 1;
+    grid-column: 1;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    font-size: 1.003rem;
+    font-weight: bold;
+  }
+
+  #picture_url {
+    grid-row: 2;
+    grid-column: 1;
+    grid-row-end: 5;
+    border-radius: 1000em;
+    width: 21.5rem;
+    max-width: 21.5rem;
+  }
+  
+  #location {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: left;
+  }
+
   #price_per_hour {
     width: 13rem;
-    padding: .22rem;
-    font-size: 1.22rem;
-}
+    padding: .9rem;
+    font-size: 1.2rem;
+    grid-row: 4;
+    grid-column: 2;
+    text-align: center;
+    justify-self: left;
+  }
+  
+  #contact{
+    grid-row: 3;
+    grid-column: 2;
+    text-align: left;
+  }
 
-#tags {
-  font-size: .89rem;
-}
+  #info {
+    grid-row: 5;
+    grid-column: 1;
+    grid-column-end: 3;
+  }
+  
+  #tags {
+    grid-row: 6;
+    grid-column: 1;
+    grid-column-end: 3;
+  }
 
-#tags > span {
-  margin: .25rem;
-  padding: 0.12rem;
-  line-height: 1.2rem;
-}
+  #bio {
+    -webkit-line-clamp: 100;
+  }
   
 }

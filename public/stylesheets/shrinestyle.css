@@ -8,3 +8,26 @@
   grid-template-columns: auto;
   grid-template-rows: auto;
 }
+
+#shrine {
+  width: 25rem;
+  height: 24rem;
+  cursor: pointer;
+}
+@media (orientation: landscape){
+
+#shrine {
+  width: 50rem;
+  height: 45rem;
+  cursor: pointer;
+  grid-column: 2;
+  justify-self:center;
+
+}
+
+.shrine{
+  display:grid;
+  grid-template-columns: auto auto auto;
+}
+
+}

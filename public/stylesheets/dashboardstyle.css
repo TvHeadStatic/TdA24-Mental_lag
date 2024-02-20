@@ -1,0 +1,22 @@
+#placeholder-section {
+    color: var(--white);
+    height: 6em;
+}
+  
+.grid {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+  
+.special-section {
+    background: var(--sky-blue);
+    padding: 3em;
+    font: 1rem Open Sans;
+    font-weight: 400;
+    color: var(--prussian-blue);
+    outline-width: 1em;
+    outline-color: var(--white);
+    outline-style: solid;
+    justify-content: center;
+}

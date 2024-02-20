@@ -20,4 +20,8 @@ router.get('/shrine', function(req, res, next) {
   res.render('shrine', { title: 'Express' });
 });
 
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard', { title: 'Express' });
+});
+
 module.exports = router;

@@ -5,22 +5,80 @@ fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`)
   .then((response) => response.json())
   .then((json) => {
 	  console.log(json.uuid)
-    doc.getElementById("picture_url").src = json.picture_url
-    doc.getElementById("title_before").innerHTML = json.title_before + " "
-    doc.getElementById("first_name").innerHTML = json.first_name + " "
-    doc.getElementById("middle_name").innerHTML = json.middle_name + " "
-    doc.getElementById("last_name").innerHTML = json.last_name + " "
-    doc.getElementById("title_after").innerHTML = json.title_after + " "
-    doc.getElementById("location").innerHTML = "Location:<br>" + "<span style=\"weight: normal;\">" + json.location + "</span>"
-    doc.getElementById("claim").innerHTML = json.claim
-    doc.getElementById("bio").innerHTML = json.bio
+    if (json.picture_url == 0 || !json.picture_url) {
+        doc.getElementById("picture_url").src = 'https://pngimg.com/uploads/smiley/smiley_PNG186.png'
+      }
+    else {
+      doc.getElementById("picture_url").src = json.picture_url
+    }
+
+    if (json.title_before == 0 || !json.title_before) {
+      doc.getElementById("title_before").innerHTML = ""
+    }
+    else {
+      doc.getElementById("title_before").innerHTML = json.title_before + " "
+    }
+
+    if (json.first_name == 0 || !json.first_name) {
+      doc.getElementById("first_name").innerHTML = ""
+    }
+    else{
+      doc.getElementById("first_name").innerHTML = json.first_name + " "
+    }
+
+    if (json.middle_name == 0 || !json.middle_name) {
+      doc.getElementById("middle_name").innerHTML = ""
+    }
+    else{
+      doc.getElementById("middle_name").innerHTML = json.middle_name + " "
+    }
+
+    if (json.last_name == 0 || !json.last_name) {
+      doc.getElementById("last_name").innerHTML = ""
+    }
+    else {
+      doc.getElementById("last_name").innerHTML = json.last_name + " "
+    }
+
+    if (json.title_after == 0 || !json.title_after) {
+      doc.getElementById("title_after").innerHTML = ""
+    }
+    else {
+      doc.getElementById("title_after").innerHTML = json.title_after + " "
+    }
+
+    if (json.location == 0 || !json.location) {
+      doc.getElementById("location").innerHTML = ""
+    }
+    else {
+      doc.getElementById("location").innerHTML = "Location:<br>" + "<span style=\"weight: normal;\">" + json.location + "</span>"
+    }
+
+    if (json.claim == 0 || !json.claim) {
+      doc.getElementById("claim").innerHTML = ""
+    }
+    else {
+      doc.getElementById("claim").innerHTML = json.claim
+    }
+
+    if (json.bio == 0 || !json.bio) {
+      doc.getElementById("bio").innerHTML = ""
+    }
+    else {
+      doc.getElementById("bio").innerHTML = json.bio
+    }
 
     for (let i = 0; i < json.tags.length; i++){
       doc.getElementById("tags").appendChild(document.createElement("span"))
       doc.getElementById("tags").children[i].innerHTML = json.tags[i].name + " "
     }
-    
-    doc.getElementById("price_per_hour").innerHTML = "Price: " + json.price_per_hour + " CZK/h"
+
+    if (json.price_per_hour == 0 || !json.price_per_hour) {
+      doc.getElementById("price_per_hour").innerHTML = ""
+    }
+    else {
+      doc.getElementById("price_per_hour").innerHTML = "Price: " + json.price_per_hour + " CZK/h"
+    }
 
     doc.getElementById("contact").children[0].innerHTML = "<b>Telephone:<br></b>"
     for(let i = 0; i < json.contact.telephone_numbers.length; i++) {
@@ -33,7 +91,6 @@ fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`)
       doc.getElementById("emails").appendChild(document.createElement("span"))
       doc.getElementById("emails").children[i+1].innerHTML = json.contact.emails[i] + "<br>"
     }
-
   });
 
 function Clamp() {

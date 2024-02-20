@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title= title
+    link(rel="icon" type="image/x-icon" href="/images/favicon.ico")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/dashboardstyle.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  body
+    div(class="topnav" id="myTopnav")
+      div(class="navholder")
+        img(src="/images/TdA_šipka/300ppi/TdA_sipka_bila.png")
+        a(href="/" class="active") Home
+        a(href="javascript:void(0);" class="icon" onclick="nav_bar_expand()")
+          i(class="fa fa-bars")
+  
+    section(id="wrapper")
+      section(id="placeholder-section")
+      section(class="special-section grid")
+        div(id="picture")
+          img(id="picture_url")
+          
+    section(id="footer")
+      div
+        img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")
+  
+  script(src="/js/index.js")

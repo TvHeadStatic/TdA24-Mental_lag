@@ -20,8 +20,65 @@ html
       section(id="placeholder-section")
       section(class="special-section grid")
         div(id="picture")
-          img(id="picture_url")
+          img(id="picture_url" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.vice.com%2Fnoisey%2Fcontent-images%2Fcontentimage%2F96940%2Fpotato-013.jpg&f=1&nofb=1&ipt=7ad289aec740fb5a450232ed8edde2be16e5a02aa9d2bca180c076d9fdee570b&ipo=images")
+        div(id="name")
+          span(id="title_before")
+          span(id="first_name") Jerry 
+          span(id="middle_name") The 
+          span(id="last_name") Potato
+          span(id="title_after") ™
+        form(id="edit")
+          label(for="title1") Title before:
+          br
+          input(type="text" id="title1" placeholder="title")
+          br
+          label(for="fname") First name:
+          br
+          input(type="text" id="fname" placeholder="first name")
+          br
+          label(for="mname") Middle name: 
+          br
+          input(type="text" id="mname" placeholder="middle name (optional)")
+          br
+          label(for="lname") Last name:
+          br
+          input(type="text" id="lname" placeholder="last name")
+          br
+          label(for="title2") Title after:
+          br
+          input(type="text" id="title2" placeholder="title")
+          br
+          label(for="location") Location:
+          br
+          input(type="text" id="location" placeholder="location")
+          br
+          label(for="price") Price:
+          br
+          input(type="text" id="price" placeholder="price")
+          br
+          label(for="telephone") Telephone:
+          br
+          input(type="text" id="telephone" placeholder="telephone")
+          br
+          label(for="email") Emails:
+          br
+          input(type="text" id="email" placeholder="email")
+          br
+          label(for="claim") Claim:
+          br
+          input(type="text" id="claim" placeholder="claim")
+          br
+          label(for="bio") Bio:
+          br
+          input(type="text" id="bio" placeholder="bio")
+          br
+          label(for="tags") Tags:
+          br
+          input(type="text" id="tags" placeholder="tags")
+          br
+          input(type="submit" id="submit" value="submit")
           
+
     section(id="footer")
       div
         img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")

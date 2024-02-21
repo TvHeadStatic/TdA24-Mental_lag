@@ -5,8 +5,8 @@
   
 .grid {
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-columns: 5em auto;
+    grid-template-rows: 5em auto;
 }
   
 .special-section {
@@ -18,5 +18,26 @@
     outline-width: 1em;
     outline-color: var(--white);
     outline-style: solid;
-    justify-content: center;
+}
+
+#picture {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#picture_url {
+    width: 5rem;
+}
+
+#name {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
+    display: inline-block;
+}
+
+form {
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }

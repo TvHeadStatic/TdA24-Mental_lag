@@ -1,22 +1,39 @@
 var doc = document
-fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers`)
+fetch(`http://localhost:3000/api/lecturers`)
    .then((response) => response.json())
    .then((json) => {
-      let tagssss = ""
+      // let tagssss = ""
       for (let i = 0; i < json.length; i++) {
-         tagssss = ""
-         for (let j = 0; j < json[i].tags.length; j++) {
-            tagssss += json[i].tags[j].name + " "
+         // tagssss = ""
+         // for (let j = 0; j < json[i].tags.length; j++) {
+         //    tagssss += json[i].tags[j].name + " "
+         // }
+         //obrázek, claim, cenu za hodinu, lokalitu a tagy
+         let placeholders = [
+            json[i].title_before,
+            json[i].first_name,
+            json[i].middle_name,
+            json[i].last_name,
+            json[i].title_after,
+            json[i].picture_url,
+            json[i].claim,
+            json[i].location,
+            json[i].price_per_hour]
+         for (let i = 0; i < placeholders.length; i++) {
+            if (placeholders[i] == 0 || !placeholders[i]) {
+               placeholders[i] = ""
+            }
          }
-         //obrázek, claim, cenu za hodinu, lokalitu a tagy 
+         
          doc.getElementById("lecturerlist").innerHTML += `
-         <section class="special-section lecturer ${tagssss} ${json[i].price_per_hour} ${json[i].location}">
-            <h2>${json[i].title_before} ${json[i].first_name} ${json[i].middle_name} ${json[i].last_name} ${json[i].title_after}</h2>
-            <img class="lectimg" src="${json[i].picture_url}">
+         <section class="special-section lecturer">
+            <h2>${placeholders[0]} ${placeholders[1]} ${placeholders[2]} ${placeholders[3]} ${placeholders[4]}</h2>
+            <img class="lectimg" src="${placeholders[5]}">
             <div>
-               <p>${json[i].claim}</p>
-               <p>${json[i].location}</p>
-               <p><span class="lectprice">${json[i].price_per_hour} CZK/h</span> <a href="/lecturer/${json[i].uuid}"><span class="lectgo">CHECK OUT</span></a></p>
+               <p>${placeholders[6]}</p>
+               <p>${placeholders[7]}</p>
+               <p><span class="lectprice">${placeholders[8]} CZK/h</span></p>
+               <p><a href="/lecturer/${json[i].uuid}"><span class="lectgo">SHOW MORE</span></a> <a><span class="lectgo">BOOK</a></span></p>
             </div>
             <p id="tags${i}" class="lecttags"></p>
          </section><br>

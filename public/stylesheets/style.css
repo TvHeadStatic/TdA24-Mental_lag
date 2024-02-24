@@ -88,6 +88,24 @@ a {
   padding: 1em;
 }
 
+.topnav .specialbutton {
+  border-radius: 0.3em;
+  float: right;
+  display: block;
+  color: var(--jet);
+  background-color: var(--sunglow);
+  text-align: center;
+  padding: 1em 1.2em;
+  text-decoration: none;
+  font-size: 1.2rem;
+  width: fit-content;
+}
+
+.topnav .specialbutton:hover {
+  background-color: var(--white);
+  color: var(--jet);
+}
+
 .topnav a {
   float: left;
   display: block;

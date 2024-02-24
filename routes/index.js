@@ -3,25 +3,29 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'TDA | Home' });
 });
 
 /* GET lecturer page. */
 router.get('/lecturer', function(req, res, next) {
-  res.render('lecturer', { title: 'Express' });
+  res.render('lecturer', { title: 'TDA | Lecturer' });
 });
 
 /* GET lecturer page. */
 router.get('/lecturer/:uuid', function(req, res, next) {
-  res.render('lecturer', { uuid: req.params.uuid });
+  res.render('lecturer', { title: 'TDA | Lecturer', uuid: req.params.uuid });
 });
 
 router.get('/shrine', function(req, res, next) {
-  res.render('shrine', { title: 'Express' });
+  res.render('shrine', { title: 'TDA | Meow 🐈' });
 });
 
 router.get('/dashboard', function(req, res, next) {
-  res.render('dashboard', { title: 'Express' });
+  res.render('dashboard', { title: 'TDA | Dashboard' });
+});
+
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'TDA | About' });
 });
 
 module.exports = router;

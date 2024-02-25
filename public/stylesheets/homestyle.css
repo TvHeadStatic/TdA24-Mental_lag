@@ -97,6 +97,11 @@
   padding-right: 1em;
 }
 
+.lecturer {
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 /*Desktop design*/
 @media (orientation: landscape) {
   #about {

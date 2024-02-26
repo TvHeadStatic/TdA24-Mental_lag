@@ -22,13 +22,13 @@ html
       section(id="placeholder-section")
       section(class="special-section grid")
         div(id="picture")
-          img(id="picture_url" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.vice.com%2Fnoisey%2Fcontent-images%2Fcontentimage%2F96940%2Fpotato-013.jpg&f=1&nofb=1&ipt=7ad289aec740fb5a450232ed8edde2be16e5a02aa9d2bca180c076d9fdee570b&ipo=images")
+          img(id="picture_url" src="")
         h1(id="name")
           span(id="title_before")
-          span(id="first_name") Jerry 
-          span(id="middle_name") The 
-          span(id="last_name") Potato
-          span(id="title_after") ™
+          span(id="first_name")
+          span(id="middle_name")
+          span(id="last_name")
+          span(id="title_after")
         form(id="edit")
           label(for="title1") Title before:
           br
@@ -58,14 +58,6 @@ html
           br
           input(type="text" id="price" placeholder="price")
           br
-          label(for="telephone") Telephone:
-          br
-          input(type="text" id="telephone" placeholder="telephone")
-          br
-          label(for="email") Emails:
-          br
-          input(type="text" id="email" placeholder="email")
-          br
           label(for="claim") Claim:
           br
           input(type="text" id="claim" placeholder="claim")
@@ -74,15 +66,74 @@ html
           br
           input(type="text" id="bio" placeholder="bio")
           br
-          label(for="tags") Tags:
-          br
-          input(type="text" id="tags" placeholder="tags")
-          br
           input(type="submit" id="submit" value="submit")
           
+        table(id="calendar")
+          tr 
+            th(id="calm" colspan="7")
+          tr
+            th M
+            th T
+            th W
+            th T
+            th F
+            th S
+            th S
+          tr
+            td(id="cal1") 
+            td(id="cal2") 
+            td(id="cal3") 
+            td(id="cal4") 
+            td(id="cal5") 
+            td(id="cal6") 
+            td(id="cal7") 
+          tr
+            td(id="cal8") 
+            td(id="cal9") 
+            td(id="cal10") 
+            td(id="cal11") 
+            td(id="cal12") 
+            td(id="cal13") 
+            td(id="cal14") 
+          tr
+            td(id="cal15") 
+            td(id="cal16") 
+            td(id="cal17") 
+            td(id="cal18") 
+            td(id="cal19") 
+            td(id="cal20") 
+            td(id="cal21") 
+          tr
+            td(id="cal22") 
+            td(id="cal23") 
+            td(id="cal24") 
+            td(id="cal25") 
+            td(id="cal26") 
+            td(id="cal27") 
+            td(id="cal28") 
+          tr
+            td(id="cal29") 
+            td(id="cal30") 
+            td(id="cal31") 
+            td(id="cal32")
+            td(id="cal33")
+            td(id="cal34")
+            td(id="cal35")
+          tr 
+            td(id="cal36")
+            td(id="cal37")
+            td(id="cal38")
+            td(id="cal39")
+            td(id="cal40")
+            td(id="cal41")
+            td(id="cal42")
+           
 
     section(id="footer")
       div
         img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")
   
+  script(type='text/javascript').
+    var uuid = "#{uuid}";
   script(src="/js/index.js")
+  script(src="/js/dashboard.js")

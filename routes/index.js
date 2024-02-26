@@ -24,6 +24,10 @@ router.get('/dashboard', function(req, res, next) {
   res.render('dashboard', { title: 'TDA | Dashboard' });
 });
 
+router.get('/dashboard/:uuid', function(req, res, next) {
+  res.render('dashboard', { title: 'TDA | Dashboard', uuid: req.params.uuid });
+});
+
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'TDA | About' });
 });

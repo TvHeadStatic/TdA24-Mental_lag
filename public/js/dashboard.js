@@ -73,6 +73,9 @@ let days = 31;
 let month = d.getMonth()
 let year = d.getFullYear()
 const firstDay = new Date(`${month + 1} 1, ${year} 01:00:00`)
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+doc.getElementById("calm").innerHTML = months[month]
 
 if (month == 1 && year % 4 == 0) {
   days = 29
@@ -82,43 +85,6 @@ else if (month == 1 && year % 4 != 0) {
 }
 else if (month == 3 || month == 5 || month == 8 || month == 10) {
   days = 30
-}
-
-if (month == 0){
-  doc.getElementById("calm").innerHTML = "January"
-}
-else if (month == 1) {
-  doc.getElementById("calm").innerHTML = "February"
-}
-else if (month == 2) {
-  doc.getElementById("calm").innerHTML = "March"
-}
-else if (month == 3) {
-  doc.getElementById("calm").innerHTML = "April"
-}
-else if (month == 4) {
-  doc.getElementById("calm").innerHTML = "May"
-}
-else if (month == 5) {
-  doc.getElementById("calm").innerHTML = "June"
-}
-else if (month == 6) {
-  doc.getElementById("calm").innerHTML = "July"
-}
-else if (month == 7) {
-  doc.getElementById("calm").innerHTML = "August"
-}
-else if (month == 8) {
-  doc.getElementById("calm").innerHTML = "September"
-}
-else if (month == 9) {
-  doc.getElementById("calm").innerHTML = "October"
-}
-else if (month == 10) {
-  doc.getElementById("calm").innerHTML = "November"
-}
-else if (month == 11) {
-  doc.getElementById("calm").innerHTML = "December"
 }
 
 let donut = firstDay.getDay()

@@ -14,8 +14,8 @@ var router = express.Router();
 
 // Basic HTTP authentication middleware
 router.use((req, res, next) => {
-  if (!req.get('Authorization') || !req.body.hasOwnProperty('Authorization')) {
-    res.set('WWW-Authenticate', 'Basic realm="401"')
+  if (!req.get('Authorization')) {
+    res.set('WWW-Authenticate', 'Basic')
     return res.status(401).send('Authentication required.')
   } else {
     var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
@@ -24,9 +24,10 @@ router.use((req, res, next) => {
 
     var username = credentials[0]
     var password = credentials[1]
+    console.log(username + " " + password)
 
     if(!(username == 'admin' && password == 'admin123')){
-      res.set('WWW-Authenticate', 'Basic realm="401"')
+      res.set('WWW-Authenticate', 'Basic')
       return res.status(401).send('Authentication required.')
     }
     res.status(200)

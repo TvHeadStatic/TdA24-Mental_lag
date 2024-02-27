@@ -12,6 +12,31 @@ const db = new sqlite3.Database(path.join(__dirname, 'data','db.sqlite'));
 
 var router = express.Router();
 
+// Basic HTTP authentication middleware
+app.use((req, res, next) => {
+  if(!req.get('Authorization')){
+      var err = new Error('Not Authenticated!')
+      res.status(401).set('WWW-Authenticate', 'Basic')
+      next(err)
+  }
+  else{
+      var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
+      .toString()
+      .split(':')
+
+      var username = credentials[0]
+      var password = credentials[1]
+
+      if(!(username === 'admin' && password === 'admin123')){
+          var err = new Error('Not Authenticated!')
+          res.status(401).set('WWW-Authenticate', 'Basic')
+          next(err)
+      } 
+      res.status(200)
+      next()
+  }
+})
+
 router.use(bodyParser.json());
 var sql = `
 CREATE TABLE lecturer(

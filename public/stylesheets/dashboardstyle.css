@@ -79,14 +79,41 @@
 
 #calendar {
     border-collapse: collapse;
+    grid-row: 4;
+    background-color: var(--jet);
+    color: var(--white);
 }
 
 #calendar > tr, th, td {
-    border: var(--jet) 0.2em solid;
+    border: var(--prussian-blue) 0.2em solid;
     text-align: center;
 }
 
 form {
-    grid-row: 4;
+    grid-row: 3;
     text-align: center;
+}
+
+@media (orientation: landscape) {
+    .grid {
+        grid-template-columns: auto auto;
+    }
+
+    form {
+        grid-row-start: 2;
+        grid-column: 2;
+        grid-row-end: 4;
+    }
+
+    #calendar {
+        grid-row: 3;
+    }
+
+    #calendar > tr, th, td {
+        width: 2em;
+        height: 2em;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
 }

@@ -91,6 +91,12 @@ let donut = firstDay.getDay()
 
 for (i = 0 ; i < days ; i++) {
   doc.getElementById(`cal${i + donut}`).innerHTML = i + 1
+  if (i == days - 1) {
+    for (j = i + donut ; j < 42 ; j++){
+      doc.getElementById(`cal${j + 1}`).innerHTML = j - (i + donut) + 1
+      doc.getElementById(`cal${j + 1}`).style = "opacity: 0.5;"
+    }
+  }
 }
 
 doc.getElementById(`cal${d.getDate() + donut - 1}`).style = "background-color: var(--sunglow);"

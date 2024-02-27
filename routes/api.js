@@ -13,7 +13,7 @@ const db = new sqlite3.Database(path.join(__dirname, 'data','db.sqlite'));
 var router = express.Router();
 
 // Basic HTTP authentication middleware
-app.use((req, res, next) => {
+router.use((req, res, next) => {
   if(!req.get('Authorization')){
       var err = new Error('Not Authenticated!')
       res.status(401).set('WWW-Authenticate', 'Basic')

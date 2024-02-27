@@ -16,7 +16,7 @@ var router = express.Router();
 router.use((req, res, next) => {
   if(!req.get('Authorization')){
       var err = new Error('Not Authenticated!')
-      res.status(401).set('WWW-Authenticate', 'Basic')
+      return res.status(401).set('WWW-Authenticate', 'Basic')
       next(err)
   }
   else{
@@ -29,10 +29,10 @@ router.use((req, res, next) => {
 
       if(!(username === 'admin' && password === 'admin123')){
           var err = new Error('Not Authenticated!')
-          res.status(401).set('WWW-Authenticate', 'Basic')
+          return res.status(401).set('WWW-Authenticate', 'Basic')
           next(err)
       } 
-      res.status(200)
+      return res.status(200)
       next()
   }
 })

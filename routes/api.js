@@ -16,9 +16,8 @@ var router = express.Router();
 router.use((req, res, next) => {
   try {
     if (!req.get('Authorization')) {
-      var err = new Error('Not Authenticated!')
-      res.status(401).set('WWW-Authenticate', 'Basic')
-      next(err)
+      res.set('WWW-Authenticate', 'Basic realm="401"')
+      res.status(401).send('Authentication required.')
     } else {
       var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
       .toString()
@@ -28,17 +27,15 @@ router.use((req, res, next) => {
       var password = credentials[1]
 
       if(!(username === 'admin' && password === 'admin123')){
-        var err = new Error('Not Authenticated!')
-        res.status(401).set('WWW-Authenticate', 'Basic')
-        next(err)
-      } 
+        res.set('WWW-Authenticate', 'Basic realm="401"')
+        res.status(401).send('Authentication required.')
+      }
       res.status(200)
       next()
     }
   } catch (error) {
-    var err = new Error('Not Authenticated!')
-    res.status(401).set('WWW-Authenticate', 'Basic')
-    next(err)
+    res.set('WWW-Authenticate', 'Basic realm="401"')
+    res.status(401).send('Authentication required.')
   }
 })
 

@@ -14,28 +14,23 @@ var router = express.Router();
 
 // Basic HTTP authentication middleware
 router.use((req, res, next) => {
-  try {
-    if (!req.get('Authorization')) {
-      res.set('WWW-Authenticate', 'Basic realm="401"')
-      res.status(401).send('Authentication required.')
-    } else {
-      var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
-      .toString()
-      .split(':')
-
-      var username = credentials[0]
-      var password = credentials[1]
-
-      if(!(username === 'admin' && password === 'admin123')){
-        res.set('WWW-Authenticate', 'Basic realm="401"')
-        res.status(401).send('Authentication required.')
-      }
-      res.status(200)
-      next()
-    }
-  } catch (error) {
+  if (!req.get('Authorization') || !req.body.hasOwnProperty('Authorization')) {
     res.set('WWW-Authenticate', 'Basic realm="401"')
-    res.status(401).send('Authentication required.')
+    return res.status(401).send('Authentication required.')
+  } else {
+    var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
+    .toString()
+    .split(':')
+
+    var username = credentials[0]
+    var password = credentials[1]
+
+    if(!(username == 'admin' && password == 'admin123')){
+      res.set('WWW-Authenticate', 'Basic realm="401"')
+      return res.status(401).send('Authentication required.')
+    }
+    res.status(200)
+    next()
   }
 })
 

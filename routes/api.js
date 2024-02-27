@@ -14,12 +14,12 @@ var router = express.Router();
 
 // Basic HTTP authentication middleware
 router.use((req, res, next) => {
-  if(!req.get('Authorization')){
+  try {
+    if (!req.get('Authorization')) {
       var err = new Error('Not Authenticated!')
-      return res.status(401).set('WWW-Authenticate', 'Basic')
+      res.status(401).set('WWW-Authenticate', 'Basic')
       next(err)
-  }
-  else{
+    } else {
       var credentials = Buffer.from(req.get('Authorization').split(' ')[1], 'base64')
       .toString()
       .split(':')
@@ -28,12 +28,17 @@ router.use((req, res, next) => {
       var password = credentials[1]
 
       if(!(username === 'admin' && password === 'admin123')){
-          var err = new Error('Not Authenticated!')
-          return res.status(401).set('WWW-Authenticate', 'Basic')
-          next(err)
+        var err = new Error('Not Authenticated!')
+        res.status(401).set('WWW-Authenticate', 'Basic')
+        next(err)
       } 
-      return res.status(200)
+      res.status(200)
       next()
+    }
+  } catch (error) {
+    var err = new Error('Not Authenticated!')
+    res.status(401).set('WWW-Authenticate', 'Basic')
+    next(err)
   }
 })
 

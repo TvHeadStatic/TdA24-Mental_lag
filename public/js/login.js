@@ -19,7 +19,8 @@ signupForm.addEventListener('submit', event => {
       method: "POST",
       body: JSON.stringify({
          first_name: String(data.firstname),
-         last_name: String(data.lastname)
+         last_name: String(data.lastname),
+         tags: [{"name": "Default"},{"name": "Newcomer"}]
       }),
       headers: {
          "Content-type": "application/json; charset=UTF-8",

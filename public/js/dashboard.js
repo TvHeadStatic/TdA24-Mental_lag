@@ -121,7 +121,7 @@ editForm.addEventListener('submit', event => {
         last_name: String(data.lastname),
         title_after: String(data.titleafter),
         location: String(data.location),
-        price: data.price,
+        price: Number(data.price),
         claim: String(data.claim),
         bio: String(data.bio)
       }),

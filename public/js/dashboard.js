@@ -105,13 +105,13 @@ for (i = 0 ; i < days ; i++) {
 
 doc.getElementById(`cal${d.getDate() + donut - 1}`).style = "background-color: var(--sunglow);"
 
-const editForm = document.querySelector('#edit')
+const editForm = document.querySelector('.editor')
 
 editForm.addEventListener('submit', event => {
   event.preventDefault()
   const editFormData = new FormData(editForm)
   const data = Object.fromEntries(editFormData)
-
+  console.log(data)
    fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {   
       method: "PUT",
       body: JSON.stringify({

@@ -1,6 +1,10 @@
 var doc = document
 
-fetch(`http://localhost:3000/api/lecturers/${uuid}`)
+fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {
+  headers: {
+    "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
+  }
+})
   .then((response) => response.json())
   .then((json) => {
 	  console.log(json.uuid)

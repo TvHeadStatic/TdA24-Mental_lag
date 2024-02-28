@@ -26,7 +26,7 @@ router.use((req, res, next) => {
     var password = credentials[1]
     console.log(username + " " + password)
 
-    if(!(username == 'admin' && password == 'admin123')){
+    if(!(username == 'TdA' && password == 'd8Ef6!dGG_pv')){
       res.set('WWW-Authenticate', 'Basic')
       return res.status(401).send('Authentication required.')
     }

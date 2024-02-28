@@ -112,7 +112,7 @@ editForm.addEventListener('submit', event => {
   const editFormData = new FormData(editForm)
   const data = Object.fromEntries(editFormData)
 
-   fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers${uuid}`, {   
+   fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {   
       method: "PUT",
       body: JSON.stringify({
         title_before: String(data.titlebefore),

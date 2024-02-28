@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title= title
+    link(rel="icon" type="image/x-icon" href="/images/favicon.ico")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/shrinestyle.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  body
+    div(class="topnav" id="myTopnav")
+      div(class="navholder")
+        img(src="/images/TdA_šipka/300ppi/TdA_sipka_bila.png")
+        a(href="/" class="active") Home
+        a(href="/about" class="active") About
+        a(href="/dashboard" class="active specialbutton") Log in
+        a(href="javascript:void(0);" class="icon" onclick="nav_bar_expand()")
+          i(class="fa fa-bars")
+
+    section(id="wrapper")
+      section(id="placeholder-section")
+      section(class="special-section grid")
+        h1 Log in
+        form(class="loginform")
+          input(name="uuid" type="text", placeholder="uuid")
+          button(type="submit") Log in
+        h1 Sign up 
+        form(class="signupform")
+          input(name="firstname" type="text" placeholder="first name")
+          input(name="lastname" type="text" placeholder="last name")
+          button(type="submit") Sign up
+    section(id="footer")
+      div
+        img(src="/images/TdA_LOGO/TeacherDigitalAgency_LOGO_white.png")
+  script(src="/js/index.js")
+  script(src="/js/login.js")

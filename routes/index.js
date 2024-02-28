@@ -32,4 +32,8 @@ router.get('/about', function(req, res, next) {
   res.render('about', { title: 'TDA | About' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'TDA | Log in' });
+});
+
 module.exports = router;

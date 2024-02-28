@@ -132,4 +132,5 @@ editForm.addEventListener('submit', event => {
    })
    .then((response) => response.json())
    .then((json) => console.log(json))
+   window.open(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/dashboard/${uuid}`, "_self");
 })

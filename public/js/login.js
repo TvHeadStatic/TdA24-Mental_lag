@@ -18,8 +18,8 @@ signupForm.addEventListener('submit', event => {
    fetch("http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers", {   
       method: "POST",
       body: JSON.stringify({
-         first_name: data.firstname,
-         last_name: data.lastname
+         first_name: String(data.firstname),
+         last_name: String(data.lastname)
       }),
       headers: {
          "Content-type": "application/json; charset=UTF-8",

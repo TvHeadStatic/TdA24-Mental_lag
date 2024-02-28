@@ -122,7 +122,7 @@ editForm.addEventListener('submit', event => {
         title_after: data.titleafter,
         location: data.location,
         //price: Number(data.price),
-        claim: data.claim,
+        //claim: data.claim,
         bio: data.bio
       }),
       headers: {

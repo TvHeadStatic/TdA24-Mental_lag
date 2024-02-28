@@ -11,7 +11,7 @@ loginForm.addEventListener('submit', event => {
 
 signupForm.addEventListener('submit', event => {
    event.preventDefault()
-   const signupFormData = new FormData(loginForm)
+   const signupFormData = new FormData(signupForm)
    const data = Object.fromEntries(signupFormData)
 
    //post

@@ -115,15 +115,15 @@ editForm.addEventListener('submit', event => {
    fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {   
       method: "PUT",
       body: JSON.stringify({
-        title_before: data.titlebefore,
-        first_name: data.firstname,
-        middle_name: data.middlename,
-        last_name: data.lastname,
-        title_after: data.titleafter,
-        location: data.location,
-        //price: Number(data.price),
-        //claim: data.claim,
-        bio: data.bio
+        title_before: String(data.titlebefore),
+        first_name: String(data.firstname),
+        middle_name: String(data.middlename),
+        last_name: String(data.lastname),
+        title_after: String(data.titleafter),
+        location: String(data.location),
+        price_per_hour: Number(data.price),
+        claim: String(data.claim),
+        bio: String(data.bio)
       }),
       headers: {
          "Content-type": "application/json; charset=UTF-8",
@@ -131,6 +131,8 @@ editForm.addEventListener('submit', event => {
       }
    })
    .then((response) => response.json())
-   .then((json) => console.log(json))
-   window.open(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/dashboard/${uuid}`, "_self");
+   .then((json) => {
+    console.log(json)
+    window.open(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/dashboard/${uuid}`, "_self");
+  })
 })

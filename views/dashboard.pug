@@ -29,44 +29,46 @@ html
           span(id="middle_name")
           span(id="last_name") 
           span(id="title_after")
-        form(class="editor" id="edit")
-          label(for="title1") Title before:
-          br
-          input(name="titlebefore" type="text" id="title1" placeholder="title")
-          br
-          label(for="fname") First name:
-          br
-          input(name="firstname" type="text" id="fname" placeholder="firstname")
-          br
-          label(for="mname") Middle name: 
-          br
-          input(name="middlename" type="text" id="mname" placeholder="middlename")
-          br
-          label(for="lname") Last name:
-          br
-          input(name="lastname" type="text" id="lname" placeholder="lastname")
-          br
-          label(for="title2") Title after:
-          br
-          input(name="titleafter" type="text" id="title2" placeholder="title")
-          br
-          label(for="location") Location:
-          br
-          input(name="location" type="text" id="location" placeholder="location")
-          br
-          label(for="price") Price:
-          br
-          input(name="price" type="number" id="price" placeholder="price" step=".01")
-          br
-          label(for="claim") Claim:
-          br
-          input(name="claim" type="text" id="claim" placeholder="claim")
-          br
-          label(for="bio") Bio:
-          br
-          input(name="bio" type="text" id="bio" placeholder="bio")
-          br
-          button(type="submit" id="submit") Apply changes
+        details(id="discEdit")
+          summary Edit profile
+          form(class="editor" id="edit")
+            label(for="title1") Title before:
+            br
+            input(name="titlebefore" type="text" id="title1" placeholder="title")
+            br
+            label(for="fname") First name:
+            br
+            input(name="firstname" type="text" id="fname" placeholder="firstname")
+            br
+            label(for="mname") Middle name: 
+            br
+            input(name="middlename" type="text" id="mname" placeholder="middlename")
+            br
+            label(for="lname") Last name:
+            br
+            input(name="lastname" type="text" id="lname" placeholder="lastname")
+            br
+            label(for="title2") Title after:
+            br
+            input(name="titleafter" type="text" id="title2" placeholder="title")
+            br
+            label(for="location") Location:
+            br
+            input(name="location" type="text" id="location" placeholder="location")
+            br
+            label(for="price") Price:
+            br
+            input(name="price" type="number" id="price" placeholder="price" step=".01")
+            br
+            label(for="claim") Claim:
+            br
+            input(name="claim" type="text" id="claim" placeholder="claim")
+            br
+            label(for="bio") Bio:
+            br
+            input(name="bio" type="text" id="bio" placeholder="bio")
+            br
+            button(type="submit" id="submit") Apply changes
           
         table(id="calendar")
           tr 
@@ -127,7 +129,14 @@ html
             td(id="cal40")
             td(id="cal41")
             td(id="cal42")
-           
+        div(id="cards")
+          div(id="meeting-card") 
+            h2(id="name-card") A
+            p(id="date-card") B 
+            p(id="place-card") C
+            button(id="cancel-card") Cancel
+            button(id="confirm-card") Confirm
+        button(id="deleteAcc" onclick="deleter()") Delete account
 
     section(id="footer")
       div

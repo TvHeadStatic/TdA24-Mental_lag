@@ -38,43 +38,51 @@
     display: inline-block;
 }
 
-#meeting_card {
+#cards {
+    grid-row: 5;
+}
+
+#meeting-card {
     display: grid;
     border: var(--jet) .25em solid;
     border-radius: .5em;
     background-color: var(--prussian-blue);
     color: var(--white);
-    grid-row: 5;
 }
 
-#date_card {
+#name-card {
     grid-row: 1;
     text-align: center;
+    grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#name_card {
+#date-card {
     grid-row: 2;
     text-align: center;
+    grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#place_card {
+#place-card {
     grid-row: 3;
     text-align: center;
+    grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#cancel_card {
+#cancel-card {
     grid-row: 4;
     grid-column: 1;
     text-align: right;
+    background-color: var(--sunglow);
 }
 
-#confirm_card {
+#confirm-card {
     grid-row: 4;
     grid-column: 2;
     text-align: left;
+    background-color: var(--sky-blue);
 }
 
 #calendar {
@@ -89,7 +97,7 @@
     text-align: center;
 }
 
-form {
+#edit {
     grid-row: 3;
     text-align: center;
 }
@@ -99,8 +107,8 @@ form {
         grid-template-columns: auto auto;
     }
 
-    form {
-        grid-row-start: 2;
+    #discEdit {
+        grid-row-start: 1;
         grid-column: 2;
         grid-row-end: 4;
     }
@@ -114,6 +122,10 @@ form {
         height: 2em;
         grid-row-start: 1;
         grid-row-end: 3;
+    }
+
+    #discEdit {
+        text-align: center;
     }
 
 }

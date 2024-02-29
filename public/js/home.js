@@ -37,7 +37,7 @@ fetch(`${server_url}api/lecturers`, {
                <p>${placeholders[6]}</p>
                <p>${placeholders[7]}</p>
                <p><span class="lectprice">${placeholders[8]} CZK/h</span></p>
-               <p><a href="/lecturer/${json[i].uuid}"><span class="lectgo">SHOW MORE</span></a> <a><span class="lectgo">BOOK</a></span></p>
+               <p><a href="/lecturer/${json[i].uuid}"><span class="lectgo">SHOW MORE</span></a> <a href="${server_url + "form/" + json[i].uuid}"><span class="lectgo">BOOK</a></span></p>
             </div>
             <p id="tags${i}" class="lecttags"></p>
          </section><br>

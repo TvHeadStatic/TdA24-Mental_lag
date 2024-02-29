@@ -36,4 +36,8 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'TDA | Log in' });
 });
 
+router.get('/form/:uuid', function(req, res, next) {
+  res.render('form', { title: 'TDA | Form', uuid: req.params.uuid });
+});
+
 module.exports = router;

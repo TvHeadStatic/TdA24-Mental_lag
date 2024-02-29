@@ -1,7 +1,7 @@
 var doc = document
 var clamp = 0
 
-fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {
+fetch(`${server_url}api/lecturers/${uuid}`, {
     headers: {
       "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
     }

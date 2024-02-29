@@ -1,6 +1,6 @@
 var doc = document
 
-fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {
+fetch(`${server_url}api/lecturers/${uuid}`, {
   headers: {
     "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
   }
@@ -112,7 +112,7 @@ editForm.addEventListener('submit', event => {
   const editFormData = new FormData(editForm)
   const data = Object.fromEntries(editFormData)
   console.log(data)
-   fetch(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/api/lecturers/${uuid}`, {   
+   fetch(`${server_url}api/lecturers/${uuid}`, {   
       method: "PUT",
       body: JSON.stringify({
         title_before: String(data.titlebefore),
@@ -133,6 +133,6 @@ editForm.addEventListener('submit', event => {
    .then((response) => response.json())
    .then((json) => {
     console.log(json)
-    window.open(`http://4e6843e4cd0e2b27.app.tourdeapp.cz/dashboard/${uuid}`, "_self");
+    window.open(`${server_url}dashboard/${uuid}`, "_self");
   })
 })

@@ -63,6 +63,20 @@ a {
   padding: 5em;
 }
 
+#footer #links {
+  grid-column: 2;
+  height: fit-content;
+  color: var(--sky-blue);
+  justify-content: center;
+  align-self: center;
+  opacity: .13;
+  text-decoration: none;
+}
+
+#links a {
+  width: fit-content;
+}
+
 /*Navbar (designed desktop first)*/
 .topnav {
   overflow: hidden;

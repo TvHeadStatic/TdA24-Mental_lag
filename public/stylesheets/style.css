@@ -66,15 +66,20 @@ a {
 #footer #links {
   grid-column: 2;
   height: fit-content;
-  color: var(--sky-blue);
   justify-content: center;
   align-self: center;
-  opacity: .13;
-  text-decoration: none;
 }
 
 #links a {
   width: fit-content;
+  color: var(--sunglow);
+  opacity: .69;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#links a:hover{
+  opacity: .96;
 }
 
 /*Navbar (designed desktop first)*/

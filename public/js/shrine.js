@@ -1,12 +1,19 @@
+let open = false
+let audio = new Audio('images/shrine/royaltyfree.mp3')
+
 function shrineswap(){
     element= document.getElementById("shrine");
-    if (element.src.match("/images/shrine/shrine.png")){
-        element.src = "/images/shrine/shrine_open.png";
-    } else {
-        element.src = "images/shrine/shrine.png";
+    open = !open
+    switch(open) {
+        case true:
+            element.src = "/images/shrine/shrine_open.png";
+            audio.play()
+            break
+        default:
+            element.src = "images/shrine/shrine.png";
+            audio.pause()
+            break
     }
-    var audio = new Audio('images/shrine/royaltyfree.mp3')
-    audio.play()
+    audio.volume = 0.1;
     audio.loop = true;
-    audio.volume = 0.2;
 }

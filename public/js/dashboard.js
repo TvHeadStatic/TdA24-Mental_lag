@@ -76,6 +76,7 @@ const d = new Date()
 let days = 31;
 let month = d.getMonth()
 let year = d.getFullYear()
+let day = d.getDate()
 const firstDay = new Date(`${month + 1} 1, ${year} 01:00:00`)
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -95,10 +96,12 @@ let donut = firstDay.getDay()
 
 for (i = 0 ; i < days ; i++) {
   doc.getElementById(`cal${i + donut}`).innerHTML = i + 1
+  doc.getElementById(`cal${i + donut}`).className = "one brah"
   if (i == days - 1) {
     for (j = i + donut ; j < 42 ; j++){
       doc.getElementById(`cal${j + 1}`).innerHTML = j - (i + donut) + 1
       doc.getElementById(`cal${j + 1}`).style = "opacity: 0.5;"
+      doc.getElementById(`cal${j + 1}`).className = "two brah"
     }
   }
 }
@@ -152,13 +155,55 @@ async function datetocards(chosenDate /*YYYY-MM-DD*/) {
         <h2 class="name-card">${json.rows[i].full_name}</h2>
         <p class="date-card">${json.rows[i].date} ${json.rows[i].time}</p>
         <p class="note-card">${json.rows[i].note}</p>
+        <p class="email-card">${json.rows[i].email}</p>
+        <p class="phone-card">${json.rows[i].phone}</p>
         <button class="cancel-card" onclick="deletecard('${json.rows[i].book_id}', ${i})">Cancel</button>
-        <button class="confirm-card" onclick="deletecard('${json.rows[i].book_id}', ${i})">Confirm</button>
       `
     }
   })
 }
-datetocards("2020-02-20")
+
+datetoiso(day, "one")
+
+function datetoiso(day, clas) {
+  switch (clas) {
+    case "one":
+      if (month < 9 && day < 10) {
+        datetocards(`${year}-0${month + 1}-0${day}`)
+      } else if (month < 9) {
+        datetocards(`${year}-0${month + 1}-${day}`)
+      } else if (day < 9) {
+        datetocards(`${year}-${month + 1}-0${day}`)
+      } else {
+        datetocards(`${year}-${month + 1}-${day}`)
+      }
+      break
+    case "two":
+      if (month < 11){
+        if (month < 9 && day < 10) {
+          datetocards(`${year}-0${month + 2}-0${day}`)
+        } else if (month < 9) {
+          datetocards(`${year}-0${month + 2}-${day}`)
+        } else if (day < 9) {
+          datetocards(`${year}-${month + 2}-0${day}`)
+        } else {
+          datetocards(`${year}-${month + 2}-${day}`)
+        }
+      } else {
+        month = 0
+        if (month < 9 && day < 10) {
+          datetocards(`${year}-0${month + 2}-0${day}`)
+        } else if (month < 9) {
+          datetocards(`${year}-0${month + 2}-${day}`)
+        } else if (day < 9) {
+          datetocards(`${year}-${month + 2}-0${day}`)
+        } else {
+          datetocards(`${year}-${month + 2}-${day}`)
+        }
+        break
+      }
+  }
+}
 
 async function deletecard(bookId, cardId) {
   await fetch(`${server_url}book/${bookId}`, {

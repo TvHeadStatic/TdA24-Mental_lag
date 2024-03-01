@@ -53,36 +53,35 @@
 .name-card {
     grid-row: 1;
     text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 3;
 }
 
 .date-card {
     grid-row: 2;
     text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 3;
 }
 
 .note-card {
     grid-row: 3;
     text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 3;
+}
+
+.email-card {
+    grid-row: 4;
+    text-align: center;
+}
+
+.phone-card {
+    grid-row: 5;
+    text-align: center;
 }
 
 .cancel-card {
-    grid-row: 4;
-    grid-column: 1;
-    text-align: right;
-    background-color: var(--sunglow);
-}
-
-.confirm-card {
-    grid-row: 4;
-    grid-column: 2;
-    text-align: left;
+    grid-row: 6;
+    text-align: center;
     background-color: var(--sky-blue);
+    width: 8em;
+    justify-self: center;
+    border-radius: 1em;
 }
 
 #calendar {
@@ -95,6 +94,15 @@
 #calendar > tr, th, td {
     border: var(--prussian-blue) 0.2em solid;
     text-align: center;
+}
+
+.brah{
+    cursor: pointer;
+    transition: background-color 500ms  linear;
+}
+
+.brah:hover {
+    background-color: var(--prussian-blue);
 }
 
 #edit {
@@ -114,9 +122,8 @@
     }
 
     #discEdit {
-        grid-row-start: 2;
+        grid-row: 5;
         grid-column: 2;
-        grid-row-end: 2;
     }
 
     #calendar {
@@ -136,11 +143,13 @@
     
     #cards {
         grid-row: 3;
+        width: 35em;
     }
 
     #calendar {
         grid-row: 3;
-        height: 20em;
+        height: 35em;
+        width: 35em;
     }
 
 }

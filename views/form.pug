@@ -6,7 +6,6 @@ html
     title= title
     link(rel="icon" type="image/x-icon" href="/images/favicon.ico")
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/shrinestyle.css')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   body
     div(class="topnav" id="myTopnav")
@@ -27,15 +26,15 @@ html
           form(class="bookform")
             h2(id="lecturername") placeholder
             p ...can't wait for a lesson with you! :3
-            input(name="fullname" type="text", placeholder="full name" required)
+            input(name="fullname" type="text", placeholder="full name" class="form" required)
             br
-            input(name="date" type="date" required)
-            input(name="time" type="time" required)
+            input(name="date" type="date" class="form" required)
+            input(name="time" type="time" class="form" required)
             br
-            input(name="email" type="email", placeholder="email" required)
-            input(name="phone" type="tel", placeholder="phone number" required)
+            input(name="email" type="email", placeholder="email" class="form" required)
+            input(name="phone" type="tel", placeholder="phone number" class="form" required)
             br
-            input(name="note" type="text", placeholder="note")
+            input(name="note" type="text", placeholder="note (place of meeting etc)" class="form")
             button(type="submit" id="booksub") book
             p(id="booksab")
     

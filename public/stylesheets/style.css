@@ -144,6 +144,17 @@ a {
   display: none;
 }
 
+.form, #edit > input{
+  border-radius: 1em;
+  background: var(--prussian-blue);
+  color: var(--white);
+}
+
+#booksub, .logsub, #edit > button{
+  border-radius: 1em;
+  background: var(--sunglow);
+}
+
 @media (orientation: portrait) {
   .topnav a:not(:first-child) {
     display: none;

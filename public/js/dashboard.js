@@ -184,6 +184,6 @@ function deleter() {
   .then((response) => response.json())
   .then((json) => {
     console.log(json)
-    window.open(`${server_url}dashboard/${uuid}`, "_self");
+    window.open(`${server_url}`, "_self");
   })
 }

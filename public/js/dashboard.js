@@ -163,42 +163,42 @@ async function datetocards(chosenDate /*YYYY-MM-DD*/) {
   })
 }
 
-datetoiso(day, "one")
+datetoiso(day, "one brah")
 
-function datetoiso(dayby, clas) {
+function datetoiso(day, clas) {
   switch (clas) {
-    case "one":
-      if (month < 9 && dayby < 10) {
-        datetocards(`${year}-0${month + 1}-0${dayby}`)
+    case "one brah":
+      if (month < 9 && day < 10) {
+        datetocards(`${year}-0${month + 1}-0${day}`)
       } else if (month < 9) {
-        datetocards(`${year}-0${month + 1}-${dayby}`)
-      } else if (dayby < 9) {
-        datetocards(`${year}-${month + 1}-0${dayby}`)
+        datetocards(`${year}-0${month + 1}-${day}`)
+      } else if (day < 9) {
+        datetocards(`${year}-${month + 1}-0${day}`)
       } else {
-        datetocards(`${year}-${month + 1}-${dayby}`)
+        datetocards(`${year}-${month + 1}-${day}`)
       }
       break
-    case "two":
+    case "two brah":
       if (month < 11){
-        if (month < 9 && dayby < 10) {
-          datetocards(`${year}-0${month + 2}-0${dayby}`)
+        if (month < 9 && day < 10) {
+          datetocards(`${year}-0${month + 2}-0${day}`)
         } else if (month < 9) {
-          datetocards(`${year}-0${month + 2}-${dayby}`)
-        } else if (dayby < 9) {
-          datetocards(`${year}-${month + 2}-0${dayby}`)
+          datetocards(`${year}-0${month + 2}-${day}`)
+        } else if (day < 9) {
+          datetocards(`${year}-${month + 2}-0${day}`)
         } else {
-          datetocards(`${year}-${month + 2}-${dayby}`)
+          datetocards(`${year}-${month + 2}-${day}`)
         }
       } else {
         month = 0
-        if (month < 9 && dayby < 10) {
-          datetocards(`${year}-0${month + 2}-0${dayby}`)
+        if (month < 9 && day < 10) {
+          datetocards(`${year}-0${month + 2}-0${day}`)
         } else if (month < 9) {
-          datetocards(`${year}-0${month + 2}-${dayby}`)
-        } else if (dayby < 9) {
-          datetocards(`${year}-${month + 2}-0${dayby}`)
+          datetocards(`${year}-0${month + 2}-${day}`)
+        } else if (day < 9) {
+          datetocards(`${year}-${month + 2}-0${day}`)
         } else {
-          datetocards(`${year}-${month + 2}-${dayby}`)
+          datetocards(`${year}-${month + 2}-${day}`)
         }
         break
       }

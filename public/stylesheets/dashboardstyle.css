@@ -24,6 +24,7 @@
     grid-row: 2;
     grid-column: 1;
     text-align: center;
+    max-width: 35em;
 }
 
 #picture_url {
@@ -122,12 +123,15 @@
     }
 
     #discEdit {
-        grid-row: 2;
-        grid-column: 2;
+        grid-row: 6;
+        grid-column: 1;
+        text-align: center;
     }
 
     #calendar {
         grid-row: 3;
+        height: 25em;
+        max-width: 35em;
     }
 
     #calendar > tr, th, td {
@@ -135,10 +139,6 @@
         height: 2em;
         grid-row-start: 1;
         grid-row-end: 3;
-    }
-
-    #discEdit {
-        text-align: center;
     }
     
     #cards {

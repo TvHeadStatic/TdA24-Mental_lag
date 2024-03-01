@@ -36,6 +36,7 @@ bookForm.addEventListener('submit', event => {
          uuid: uuid,
          full_name: String(data.fullname),
          date: String(data.date),
+         time: String(data.time),
          email: String(data.email),
          phone: String(data.phone),
          note: String(data.note)

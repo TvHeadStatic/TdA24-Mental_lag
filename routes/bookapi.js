@@ -19,6 +19,7 @@ CREATE TABLE book(
   uuid,
   full_name,
   date,
+  time,
   email,
   phone,
   note
@@ -33,6 +34,7 @@ router.post('/', function(req, res, next) {
       uuid,
       full_name,
       date,
+      time,
       email,
       phone,
       note
@@ -43,16 +45,18 @@ router.post('/', function(req, res, next) {
       uuid,
       full_name,
       date,
+      time,
       email,
       phone,
       note
-      ) VALUES (?,?,?,?,?,?,?)`
+      ) VALUES (?,?,?,?,?,?,?,?)`
     if (!req.body.hasOwnProperty('uuid') || req.body.uuid == null) return res.status(400).json({ status: 400, success: false, })
     if (!req.body.hasOwnProperty('full_name') || req.body.full_name == null) return res.status(400).json({ status: 400, success: false, })
     if (!req.body.hasOwnProperty('date') || req.body.date == null) return res.status(400).json({ status: 400, success: false, })
-    db.run(sql, [bookid, uuid, full_name, date, email, phone, note], (err) => {
+    if (!req.body.hasOwnProperty('time') || req.body.time == null) return res.status(400).json({ status: 400, success: false, })
+    db.run(sql, [bookid, uuid, full_name, date, time, email, phone, note], (err) => {
       if (err) return console.error(err)
-      console.log("saved:", uuid, full_name, date, email, phone, note)
+      console.log("saved:", uuid, full_name, date, time, email, phone, note)
     })
     let result = req.body
     return res.status(200).json({
@@ -62,6 +66,7 @@ router.post('/', function(req, res, next) {
       uuid: result.uuid,
       full_name: result.full_name,
       date: result.date,
+      time: result.time,
       email: result.email,
       phone: phone.phone,
       note: result.note
@@ -75,7 +80,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:uuid/:date', function(req, res, next) {
-  sql = `SELECT * FROM book WHERE uuid = '${req.params.uuid}' AND date = '${req.params.date}'`
+  sql = `SELECT * FROM book WHERE uuid = '${req.params.uuid}' AND date = '${req.params.date}' ORDER BY time ASC`
   try {
     db.all(sql, [], (err, rows) => {
       if (err) return console.error(err)

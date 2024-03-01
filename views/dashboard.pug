@@ -69,6 +69,8 @@ html
             input(name="bio" type="text" id="bio" placeholder="bio")
             br
             button(type="submit" id="submit") Apply changes
+            br
+            button(id="deleteAcc" onclick="deleter()") Delete account
           
         table(id="calendar")
           tr 
@@ -130,13 +132,6 @@ html
             td(id="cal41")
             td(id="cal42")
         div(id="cards")
-          div(id="meeting-card") 
-            h2(id="name-card") A
-            p(id="date-card") B 
-            p(id="place-card") C
-            button(id="cancel-card") Cancel
-            button(id="confirm-card") Confirm
-        button(id="deleteAcc" onclick="deleter()") Delete account
 
     section(id="footer")
       div

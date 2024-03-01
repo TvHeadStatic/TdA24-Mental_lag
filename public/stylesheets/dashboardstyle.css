@@ -42,7 +42,7 @@
     grid-row: 5;
 }
 
-#meeting-card {
+.meeting-card {
     display: grid;
     border: var(--jet) .25em solid;
     border-radius: .5em;
@@ -50,35 +50,35 @@
     color: var(--white);
 }
 
-#name-card {
+.name-card {
     grid-row: 1;
     text-align: center;
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#date-card {
+.date-card {
     grid-row: 2;
     text-align: center;
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#place-card {
+.note-card {
     grid-row: 3;
     text-align: center;
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
-#cancel-card {
+.cancel-card {
     grid-row: 4;
     grid-column: 1;
     text-align: right;
     background-color: var(--sunglow);
 }
 
-#confirm-card {
+.confirm-card {
     grid-row: 4;
     grid-column: 2;
     text-align: left;
@@ -102,15 +102,21 @@
     text-align: center;
 }
 
+#discEdit {
+    grid-row-start: 3;
+    grid-column: 1;
+    grid-row-end: 4;
+}
+
 @media (orientation: landscape) {
     .grid {
         grid-template-columns: auto auto;
     }
 
     #discEdit {
-        grid-row-start: 1;
+        grid-row-start: 2;
         grid-column: 2;
-        grid-row-end: 4;
+        grid-row-end: 2;
     }
 
     #calendar {
@@ -126,6 +132,15 @@
 
     #discEdit {
         text-align: center;
+    }
+    
+    #cards {
+        grid-row: 3;
+    }
+
+    #calendar {
+        grid-row: 3;
+        height: 20em;
     }
 
 }

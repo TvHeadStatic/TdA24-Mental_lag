@@ -136,3 +136,54 @@ editForm.addEventListener('submit', event => {
     window.open(`${server_url}dashboard/${uuid}`, "_self");
   })
 })
+
+async function datetocards(chosenDate /*YYYY-MM-DD*/) {
+  await fetch(`${server_url}book/${uuid}/${chosenDate}`, {
+    headers: {
+      "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
+    }
+  })
+  .then((response) => response.json())
+  .then((json) => {
+    doc.getElementById("cards").innerHTML = ""
+    for (let i = 0; i < json.rows.length; i++) {
+      doc.getElementById("cards").innerHTML += `
+      <div id="booking${i}" class="meeting-card">
+        <h2 class="name-card">${json.rows[i].full_name}</h2>
+        <p class="date-card">${json.rows[i].date} ${json.rows[i].time}</p>
+        <p class="note-card">${json.rows[i].note}</p>
+        <button class="cancel-card" onclick="deletecard('${json.rows[i].book_id}', ${i})">Cancel</button>
+        <button class="confirm-card" onclick="deletecard('${json.rows[i].book_id}', ${i})">Confirm</button>
+      `
+    }
+  })
+}
+datetocards("2020-02-20")
+
+async function deletecard(bookId, cardId) {
+  await fetch(`${server_url}book/${bookId}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
+    }
+  })
+  .then((response) => response.json())
+  .then((json) => {
+    console.log(json)
+    doc.getElementById(`booking${cardId}`).remove()
+  })
+}
+
+function deleter() {
+  fetch(`${server_url}api/lecturers/${uuid}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": "Basic VGRBOmQ4RWY2IWRHR19wdg=="
+    }
+  })
+  .then((response) => response.json())
+  .then((json) => {
+    console.log(json)
+    window.open(`${server_url}dashboard/${uuid}`, "_self");
+  })
+}
